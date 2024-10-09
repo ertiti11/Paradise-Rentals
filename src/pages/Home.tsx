@@ -6,11 +6,12 @@ import Activities from '../components/Activities'
 import Testimonials from '../components/Testimonials'
 import CallToAction from '../components/CallToAction'
 import Contact from '../components/Contact'
-
+import UnderHero from '../components/UnderHero'
 const Home = () => {
   return (
     <>
       <Hero />
+      <UnderHero />
       <Features />
       <BoatList />
       <Activities />

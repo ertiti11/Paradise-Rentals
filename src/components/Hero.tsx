@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className="bg-cover bg-center h-screen flex items-center paradise-gradient" style={{backgroundImage: "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80')"}}>
+    <div className="bg-cover bg-center h-screen flex items-center paradise-gradient" style={{backgroundImage: "url('https://waveride.qodeinteractive.com/wp-content/uploads/2020/01/h1-rev-background-img.jpg')"}}>
       <div className="container mx-auto text-center text-white">
         <h1 className="text-6xl font-bold mb-4 text-shadow">Descubre el paraiso en el agua</h1>
         <p className="text-2xl mb-8 text-shadow">Explore aguas cristalinas con nuestros alquileres de playa premium</p>
