@@ -2,18 +2,18 @@ import React from 'react'
 
 const testimonials = [
   {
-    name: 'Sarah L.',
-    text: 'Had an amazing time kayaking with my partner. The staff was friendly and the equipment was in great condition!',
+    name: 'Paco',
+    text: 'Muy divertido para pasar un rato en familia!',
     avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
   },
   {
-    name: 'Mike R.',
-    text: 'Rented a paddle board for the first time and loved it. Will definitely be coming back for more!',
+    name: 'Maria M.',
+    text: 'Finde perfecto en el agua. Los niños se lo pasaron en grande.',
     avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
   },
   {
-    name: 'Emily T.',
-    text: 'Our family had so much fun on the pedal boat. It was a perfect activity for a sunny afternoon.',
+    name: 'antonia',
+    text: 'Muy recomendable para desconectar y disfrutar de la naturaleza.',
     avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
   },
 ]

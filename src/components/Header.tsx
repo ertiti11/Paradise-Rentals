@@ -24,7 +24,7 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-6">
             <li><Link to="/" className="hover:text-coral transition duration-300">Home</Link></li>
-            <li><a href="#boats" className="hover:text-coral transition duration-300">Alquileres</a></li>
+            <li><a href="/Alquileres" className="hover:text-coral transition duration-300">Alquileres</a></li>
             <li><a href="#about" className="hover:text-coral transition duration-300">Sobre nosotros</a></li>
             <li><a href="#contact" className="hover:text-coral transition duration-300">Contacto</a></li>
             <li><Link to="/admin" className="hover:text-coral transition duration-300">Admin</Link></li>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
@@ -6,6 +5,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import BoatProduct from './pages/BoatProduct'
 import AdminPanel from './pages/AdminPanel'
+import Alquileres from "./pages/Alquileres"
+
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/boat/:id" element={<BoatProduct />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/alquileres" element={<Alquileres />} />
           </Routes>
         </main>
         <Footer />
