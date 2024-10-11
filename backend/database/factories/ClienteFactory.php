@@ -16,8 +16,13 @@ class ClienteFactory extends Factory
      */
     public function definition(): array
     {
+ 
         return [
             //
+            "nombre" => $this->faker->name(),
+            "apellido" => $this->faker->lastName(),
+            "telefono" => $this->faker->phoneNumber(),
+            "email" => $this->faker->unique()->safeEmail(),
         ];
     }
 }

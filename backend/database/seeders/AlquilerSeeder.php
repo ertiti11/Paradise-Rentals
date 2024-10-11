@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Alquiler;
 
 class AlquilerSeeder extends Seeder
 {
@@ -13,5 +14,8 @@ class AlquilerSeeder extends Seeder
     public function run(): void
     {
         //
+        Alquiler::factory()
+        ->count(10)
+        ->create();
     }
 }
