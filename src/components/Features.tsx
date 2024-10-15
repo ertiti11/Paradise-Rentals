@@ -2,7 +2,7 @@ import { Anchor, Shield, Sun } from 'lucide-react'
 
 const Features = () => {
   return (
-    <div className="bg-white py-16" id="about">
+    <div className="bg-white py-16 px-10 lg:px-0" id="about">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12 text-paradise-dark">¿Porqué elegirnos?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
