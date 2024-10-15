@@ -13,9 +13,6 @@ class AlquilerSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        Alquiler::factory()
-        ->count(10)
-        ->create();
+        Alquiler::factory()->count(20)->create(); // Crea 20 alquileres
     }
 }

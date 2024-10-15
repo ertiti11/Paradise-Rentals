@@ -18,11 +18,9 @@ class ClienteFactory extends Factory
     {
  
         return [
-            //
-            "nombre" => $this->faker->name(),
-            "apellido" => $this->faker->lastName(),
-            "telefono" => $this->faker->phoneNumber(),
-            "email" => $this->faker->unique()->safeEmail(),
+            'nombre' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'telefono' => $this->faker->phoneNumber,
         ];
     }
 }

@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alquileres', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cliente_id')->constrained('clientes');
-            $table->foreignId('producto_id')->constrained('productos');
-            $table->dateTime('fecha_alquiler');
-            $table->decimal('total', 10, 2)->nullable();
+            $table->id(); // int8
+            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade'); // Clave foránea
+            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade'); // Clave foránea
+            $table->timestamp('fecha_inicio'); // timestamp
+            $table->timestamp('fecha_fin')->nullable(); // timestamp opcional
+            $table->decimal('total', 8, 2); // numeric
             $table->timestamps();
         });
     }

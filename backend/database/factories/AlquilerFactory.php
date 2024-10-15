@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\Cliente;
+use App\Models\Producto;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Alquiler>
  */
@@ -17,20 +18,11 @@ class AlquilerFactory extends Factory
     public function definition(): array
     {
         return [
-            // $table->foreignId('cliente_id')->constrained('clientes');
-            // $table->foreignId('producto_id')->constrained('productos');
-            // $table->dateTime('fecha_alquiler');
-            // $table->decimal('total', 10, 2)->nullable();
-            // $table->timestamps();
-            //
-            "cliente_id" => $this->faker->numberBetween(1,2),
-            "producto_id" => $this->faker->numberBetween(1,2),
-            "fecha_alquiler" => $this->faker->dateTimeThisYear(),
-            "total" => $this->faker->randomFloat(2, 100, 1000),
-            
-
-
-            
+            'cliente_id' => Cliente::factory(), // Crea un cliente asociado
+            'producto_id' => Producto::factory(), // Crea un producto asociado
+            'fecha_inicio' => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'fecha_fin' => $this->faker->dateTimeBetween('now', '+1 month'),
+            'total' => $this->faker->randomFloat(2, 50, 500),
         ];
     }
 }

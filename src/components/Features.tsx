@@ -1,4 +1,3 @@
-import React from 'react'
 import { Anchor, Shield, Sun } from 'lucide-react'
 
 const Features = () => {

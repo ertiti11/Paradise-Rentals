@@ -10,12 +10,12 @@ export default function Alquileres() {
     useEffect(() => {
         const fetchServicios = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/v1/servicios');
+                const response = await fetch('http://127.0.0.1:8000/api/v1/productos');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data: Servicio[] = await response.json();
-                setServicios(data);
+                setServicios(data.data);
                 console.log(data)
             } catch (error) {
                 setError(error as Error);

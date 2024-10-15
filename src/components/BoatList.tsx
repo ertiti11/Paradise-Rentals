@@ -1,5 +1,4 @@
 import  { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { boats, BoatCategory } from '../data/boats'
 import ServicioCard from './ServicioCard'
 

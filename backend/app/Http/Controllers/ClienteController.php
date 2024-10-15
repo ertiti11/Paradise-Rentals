@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClienteResource;
 use App\Models\Cliente;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
+use App\Filters\ClientFilter;
+use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter = new ClientFilter();
+        $query = $filter->transform($request);
+        $includeAlquileres = $request->query('includeAlquileres',default:'false');
         //
+        $clientes = Cliente::where($query);
+        if ($includeAlquileres) {
+            $clientes = $clientes->with('alquileres');
+        }
+        return new ClienteResource($clientes->paginate()->appends($request->query()));
     }
 
     /**

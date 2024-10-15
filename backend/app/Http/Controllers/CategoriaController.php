@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use App\Http\Resources\CategoriaResource;
+use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        //
+        $categorias = Categoria::paginate();
+        return new CategoriaResource($categorias);
     }
 
     /**

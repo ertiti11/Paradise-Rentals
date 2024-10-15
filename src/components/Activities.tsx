@@ -1,4 +1,3 @@
-import React from 'react'
 import { Waves, Sunset, Fish, Camera } from 'lucide-react'
 
 const activities = [

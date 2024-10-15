@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
-
+use App\Http\Resources\ProductoResource;
 class ProductoController extends Controller
 {
     /**
@@ -14,6 +14,8 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        $productos = Producto::paginate();
+        return new ProductoResource($productos);
     }
 
     /**

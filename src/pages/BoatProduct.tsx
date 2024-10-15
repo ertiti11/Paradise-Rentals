@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Users, Clock, Waves } from 'lucide-react'
 import { boats } from '../data/boats'

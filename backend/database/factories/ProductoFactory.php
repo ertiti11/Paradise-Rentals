@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Categoria;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Producto>
@@ -16,21 +17,22 @@ class ProductoFactory extends Factory
      */
     public function definition(): array
     {
-        // $table->string('nombre');
-        // $table->string('tipo');
-        // $table->decimal('precio', 10, 2);
-        // $table->integer('capacidad');
-        // $table->string("descripcion");
-        // $table->string("url_imagen");
+        // Define un array de URLs de imágenes posibles
+        $imagenes = [
+            'https://www.artiemhotels.com/uploads/5f4e933a-d8bf-458c-a630-1fb64a66ffa8/5f4e933a-d8bf-458c-a630-1fb64a66ffa8.jpeg',
+            'https://malevolo.es/server/Portal_0038177_0045553/img/blogposts/consejos-para-una-practica-segura-de-paddle-surf_12019.jpg',
+            'https://www.lanoria.net/642-large_default/hidropedal-newbeetle.jpg',
+            'https://berriasurfschool.com/wp-content/uploads/2023/07/beneficios-del-surf-para-la-salud.jpg',
+        ];
+
         return [
-            //
-            "categoria_id" => $this->faker->numberBetween(1,2),
-            "nombre" => $this->faker->word(),
-            "tipo" => $this->faker->word(),
-            "precio" => $this->faker->randomFloat(2, 100, 1000),
-            "capacidad" => $this->faker->numberBetween(1, 100),
-            "descripcion" => $this->faker->sentence(),
-            "url_imagen" => $this->faker->imageUrl(),
+            'nombre' => $this->faker->word,
+            'tipo' => $this->faker->word,
+            'precio_por_hora' => $this->faker->randomFloat(2, 10, 100),
+            'categoria_id' => Categoria::factory(), // Crea una categoría asociada
+            'capacidad' => $this->faker->randomNumber(2),
+            'url_imagen' => $imagenes[array_rand($imagenes)], // Selecciona una imagen aleatoria
+            'descripcion' => $this->faker->sentence(10),
         ];
     }
 }

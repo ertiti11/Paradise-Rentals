@@ -13,21 +13,7 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        $categorias = [
-            'Electrónica',
-            'Ropa',
-            'Hogar',
-            'Libros',
-            'Juguetes',
-            'Deportes',
-            'Salud',
-            'Belleza',
-            'Automotriz',
-            'Alimentos'
-        ];
+        Categoria::factory()->count(5)->create(); // Crea 5 categorías
 
-        foreach ($categorias as $categoria) {
-            Categoria::firstOrCreate(['nombre' => $categoria]);
-        }
     }
 }
