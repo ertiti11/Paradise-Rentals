@@ -8,7 +8,6 @@ export default function UnderHero() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
         }}>
         <h2 className="text-3xl text-white font-bold uppercase mb-3">Clases de surf privadas</h2>
         <span className="text-white bg-cyan-500 p-2 font-bold w-20 text-center">
