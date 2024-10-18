@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Analytics />
-      <div className="min-h-screen bg-blue-50 flex flex-col">
+      <div className="min-h-screen  flex flex-col">
         <Navbar />
         <main className="flex-grow">
           <Routes>

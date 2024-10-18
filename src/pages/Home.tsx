@@ -5,12 +5,12 @@ import Activities from '../components/Activities'
 import Testimonials from '../components/Testimonials'
 import CallToAction from '../components/CallToAction'
 import Contact from '../components/Contact'
-import UnderHero from '../components/UnderHero'
+import Numbers from '../components/Numbers'
 const Home = () => {
   return (
     <>
       <Hero />
-      <UnderHero />
+      <Numbers />
       <Features />
       <BoatList />
       <Activities />

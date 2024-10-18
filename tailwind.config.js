@@ -13,7 +13,7 @@ export default {
         'coral': '#3498db',
       },
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
+        'playfair': ['"Playfair Display"', 'serif'],
       },
     },
   },

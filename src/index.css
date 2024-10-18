@@ -5,7 +5,9 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Playfair Display', serif;
+  background-color: #0E0E0E!important ;
+  color: white
 }
 
 .paradise-gradient {

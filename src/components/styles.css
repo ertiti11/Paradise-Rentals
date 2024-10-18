@@ -1,0 +1,10 @@
+.blurry {
+    filter: blur(350px); /* Puedes ajustar el valor de blur si es necesario */
+    width: 900px; /* Asegúrate de que el tamaño sea adecuado */
+    height: 400px; /* Asegúrate de que el tamaño sea adecuado */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -180%);
+    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+}
