@@ -1,0 +1,69 @@
+/* Barra de navegación visible siempre (parte superior) */
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Fondo con blur extremo */
+  .main_menu {
+    backdrop-filter: blur(300px); /* Efecto de blur */
+    -webkit-backdrop-filter: blur(30px); /* Para Safari */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  }
+  
+  /* Transición para abrir/cerrar el menú */
+  nav {
+    transform: translateX(100%); /* Oculta el menú cuando está cerrado */
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  nav.translate-x-0 {
+    transform: translateX(0); /* Muestra el menú cuando está activo */
+  }
+  
+  nav.translate-x-full {
+    transform: translateX(100%); /* Mantiene el menú cerrado */
+  }
+  
+  /* Mostrar el submenú al pasar el mouse */
+  .main-section-div-wrapper.has_submenu:hover .submenu {
+    display: block; /* Mostrar submenú */
+  }
+  
+  .submenu {
+    display: none; /* Ocultar submenú inicialmente */
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .submenu li a {
+    color: black;
+    padding: 10px;
+    display: block;
+  }
+  
+  /* Botón de promoción */
+  .button-promotion {
+    padding: 10px 20px;
+    background-color: #ff5a5f;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-promotion:hover {
+    background-color: #ff3a3f;
+  }
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Suaviza el cambio de fondo y sombra */
+  }

@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Header from './components/Header'
+import Navbar from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import BoatProduct from './pages/BoatProduct'
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Analytics />
       <div className="min-h-screen bg-blue-50 flex flex-col">
-        <Header />
+        <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
