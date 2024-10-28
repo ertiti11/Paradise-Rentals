@@ -4,76 +4,8 @@ import "./styles.css";
 import SearchIcon from '../assets/SearchIcon';
 const Hero = () => {
   return (
-    <div className="bg-cover bg-center h-screen flex items-center paradise-gradient relative" style={{
-      backgroundImage: `url(${Heroimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center 40%', // Ajusta la posición de la imagen
-    }}>
-      {/* Span de blur independiente */}
-      <span className='bg-white  blurry absolute  z-10'></span>
-
-      <div className="container  mx-auto text-center text-white w-full flex items-center flex-col z-10">
-        <h1 className="text-6xl font-bold text-shadow font-playfair text-[128px] w-auto mb-[650px]">Experience
-          <br />the <span className='text-black'>ultimate</span> luxury</h1>
-
-
-        <section className='flex bg-white/20 p-5 rounded-full backdrop-blur-md'>
-
-          <div className="flex items-center w-[200px] h-[70px] border-2 border-gray-300 rounded-full bg-gray-100 p-5 ">
-            <span className="mr-2 text-gray-500">
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              className="flex-1 bg-transparent outline-none"
-              placeholder={"localidad"}
-            />
-          </div>
-          <div className="flex items-center w-[200px] h-[70px] border-2 border-gray-300 rounded-full bg-gray-100 p-5 ">
-            <span className="mr-2 text-gray-500">
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              className="flex-1 bg-transparent outline-none"
-              placeholder={"localidad"}
-            />
-          </div>
-          <div className="flex items-center w-[200px] h-[70px] border-2 border-gray-300 rounded-full bg-gray-100 p-5 ">
-            <span className="mr-2 text-gray-500">
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              className="flex-1 bg-transparent outline-none"
-              placeholder={"localidad"}
-            />
-          </div>
-          <div className="flex items-center w-[200px] h-[70px] border-2 border-gray-300 rounded-full bg-gray-100 p-5 ">
-            <span className="mr-2 text-gray-500">
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              className="flex-1 bg-transparent outline-none"
-              placeholder={"localidad"}
-            />
-          </div>
-          <div className="flex items-center w-[200px] h-[70px] border-2 border-gray-300 rounded-full bg-gray-100 p-5 ">
-            <span className="mr-2 text-gray-500">
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              className="flex-1 bg-transparent outline-none"
-              placeholder={"localidad"}
-            />
-          </div>
-
-
-
-        </section>
-      </div>
+    <div className='bg-white/90 h-[calc(100vh-4rem)] mx-10 my-10 rounded-xl mb-40'>
+      <video className='rounded-xl h-[calc(100vh-4rem)] w-full ' autoPlay={"True"} muted  src="https://download-video.akamaized.net/v3-1/playback/82fe9c0d-15ec-4823-8940-b152e34dae5c/4f6fc42c-6a4735d7?__token__=st=1729804229~exp=1729818629~acl=%2Fv3-1%2Fplayback%2F82fe9c0d-15ec-4823-8940-b152e34dae5c%2F4f6fc42c-6a4735d7%2A~hmac=d4ab64626a7c4831e15a5166f12e39cc0e480edc11ee74087843cf86372d908a&r=dXMtZWFzdDE%3D"></video>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import Hero from '../components/Hero'
-// import Numbers from '../components/Numbers'
+import Numbers from '../components/Numbers'
 const Home = () => {
   return (
     <>
       <Hero />
-      {/* <Numbers /> */}
+      <Numbers />
       {/* <Features />
       <BoatList />
       <Activities />
