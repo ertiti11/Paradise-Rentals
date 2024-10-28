@@ -12,7 +12,6 @@ const BoatProduct = () => {
 
   return (
     <div className="container mx-auto py-16">od
-      <h1>test</h1>
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="md:flex">
           <div className="md:flex-shrink-0">
