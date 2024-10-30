@@ -7,6 +7,9 @@ use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
 use App\Http\Resources\CategoriaResource;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+
+
 
 class CategoriaController extends Controller
 {
