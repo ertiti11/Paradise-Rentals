@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Categoria;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Producto>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Barco>
  */
-class ProductoFactory extends Factory
+class BarcoFactory extends Factory
 {
     /**
      * Define the model's default state.

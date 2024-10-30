@@ -8,7 +8,7 @@ use App\Models\Categoria;
 use App\Models\Alquiler;
 
 
-class Producto extends Model
+class Barco extends Model
 {
     use HasFactory;
 

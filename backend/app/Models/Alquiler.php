@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cliente;
-use App\Models\Producto;
+use App\Models\Barco;
 class Alquiler extends Model
 {
     use HasFactory;
@@ -20,8 +20,8 @@ class Alquiler extends Model
         return $this->belongsTo(Cliente::class);
     }
 
-    public function producto()
+    public function Barco()
     {
-        return $this->belongsTo(Producto::class);
+        return $this->belongsTo(Barco::class);
     }
 }

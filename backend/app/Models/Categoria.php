@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Producto;
+use App\Models\Barco;
 class Categoria extends Model
 {
     use HasFactory;
     protected $fillable = [
         "nombre"
     ];
-    public function productos()
+    public function barcos()
     {
-        return $this->hasMany(Producto::class);
+        return $this->hasMany(Barco::class);
     }
 }

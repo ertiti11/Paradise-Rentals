@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('alquileres', function (Blueprint $table) {
             $table->id(); // int8
             $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade'); // Clave foránea
-            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade'); // Clave foránea
+            $table->foreignId('barco_id')->constrained('barcos')->onDelete('cascade'); // Clave foránea
             $table->timestamp('fecha_inicio'); // timestamp
             $table->timestamp('fecha_fin')->nullable(); // timestamp opcional
             $table->decimal('total', 8, 2); // numeric

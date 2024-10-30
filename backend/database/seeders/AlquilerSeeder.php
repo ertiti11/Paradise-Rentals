@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Alquiler;
+use App\Models\Cliente;
+use App\Models\Barco;
 
 class AlquilerSeeder extends Seeder
 {
@@ -13,6 +15,16 @@ class AlquilerSeeder extends Seeder
      */
     public function run(): void
     {
-        Alquiler::factory()->count(20)->create(); // Crea 20 alquileres
+        $clienteIds = Cliente::pluck('id')->toArray(); // Obtener todos los IDs de clientes
+        $barcoIds = Barco::pluck('id')->toArray(); // Obtener todos los IDs de barcos
+
+        Alquiler::factory()->count(20)->create([
+            'cliente_id' => function () use ($clienteIds) {
+                return $clienteIds[array_rand($clienteIds)];
+            },
+            'barco_id' => function () use ($barcoIds) {
+                return $barcoIds[array_rand($barcoIds)];
+            },
+        ]);
     }
 }
