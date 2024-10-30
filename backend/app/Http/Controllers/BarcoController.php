@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Barco;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class BarcoController extends Controller
 {
@@ -15,7 +16,7 @@ class BarcoController extends Controller
             return response()->json($barcos, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración
-            \Log::error('Error al obtener los barcos: ' . $e->getMessage());
+            Log::error('Error al obtener los barcos: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
@@ -27,7 +28,7 @@ class BarcoController extends Controller
             return response()->json($barco, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración
-            \Log::error('Error al obtener el barco: ' . $e->getMessage());
+            Log::error('Error al obtener el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
@@ -35,12 +36,26 @@ class BarcoController extends Controller
     public function store(Request $request)
     {
         try {
-            $barco = Barco::create($request->all());
+            $validatedData = $request->validate([
+                'nombre' => 'required|string|max:255',
+                'tipo' => 'required|string|max:255',
+                'precio_por_hora' => 'required|numeric',
+                'categoria_id' => 'required|integer|exists:categorias,id',
+                'capacidad' => 'required|integer',
+                'url_imagen' => 'required|url',
+                'descripcion' => 'required|string',
+            ]);
+            Log::info('Datos validados:', $validatedData);
+
+
+            $barco = Barco::create($validatedData);
             return response()->json($barco, 201);
+        } catch (ValidationException $e) {
+            Log::error('Error de validación al crear el barco: ' . $e->getMessage());
+            return response()->json(['error' => 'Error de validación', 'messages' => $e->errors()], 422);
         } catch (Exception $e) {
-            // Registrar el error para depuración
-            \Log::error('Error al crear el barco: ' . $e->getMessage());
-            return response()->json(['error' => 'Error interno del servidor'], 500);
+            Log::error('Error al crear el barco: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno del servidor', 'message' => $e->getMessage()], 500);
         }
     }
 
@@ -52,7 +67,8 @@ class BarcoController extends Controller
             return response()->json($barco, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración
-            \Log::error('Error al actualizar el barco: ' . $e->getMessage());
+
+            Log::error('Error al actualizar el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
@@ -65,7 +81,8 @@ class BarcoController extends Controller
             return response()->json(null, 204);
         } catch (Exception $e) {
             // Registrar el error para depuración
-            \Log::error('Error al eliminar el barco: ' . $e->getMessage());
+
+            Log::error('Error al eliminar el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
