@@ -1,24 +1,30 @@
-import { Facebook, Twitter, Instagram } from 'lucide-react'
+// import logo from '../assets/Logo.svg';
+import footerLogo from '../assets/logoNombreDerecha.jpeg'
 
-const Footer = () => {
+const Navbar = () => {
   return (
-    <footer className="bg-paradise-dark text-white py-8">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="mb-4 md:mb-0">
-          <h3 className="text-2xl font-bold">ParadiseRentals</h3>
-          <p className="mt-2">Experimente la belleza de las aventuras costeras</p>
+    <div>
+
+      <div className="bg-black flex item-center justify-between">
+        <div className=''>
+              <img src={footerLogo} alt="" className='w-32 h-23 mr-80'/>
         </div>
-        <div className="flex space-x-4">
-          <a href="#" className="hover:text-sand transition duration-300"><Facebook size={24} /></a>
-          <a href="#" className="hover:text-sand transition duration-300"><Twitter size={24} /></a>
-          <a href="#" className="hover:text-sand transition duration-300"><Instagram size={24} /></a>
+
+        <div className='mt-12 space-x-10'>
+          <a href="" className='px-4 py-2 border border-white-500 rounded-lg bg-black text-white-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md'>Email</a>
+          <a href="" className='px-4 py-2 border border-white-500 rounded-lg bg-black text-white-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md'>Twitter</a>
+          <a href="" className='px-4 py-2 border border-white-500 rounded-lg bg-black text-white-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md'>Instagram</a>
         </div>
+        
+        
+
+        <div className='mt-12 mr-20'>
+          <p className=''>©2024 YachtVacations. Todos los derechos reservados.</p>
+        </div>
+        
       </div>
-      <div className="container mx-auto mt-4 text-center text-sm">
-        <p>&copy; 2023 ParadiseRentals. All rights reserved.</p>
-      </div>
-    </footer>
+    </div>
   )
 }
 
-export default Footer
+export default Navbar
