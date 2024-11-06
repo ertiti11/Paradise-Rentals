@@ -43,14 +43,6 @@ const AdminPanel = () => {
     boats.push(boatToAdd)
     alert('New rental item added successfully!')
     setNewBoat({
-      name: '',
-      type: '',
-      category: 'Kayak',
-      capacity: 1,
-      price: 0,
-      suitableFor: '',
-      description: '',
-      imageUrl: '',
     })
   }
 
