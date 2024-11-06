@@ -1,9 +1,10 @@
 import Hero from '../components/Hero'
-// import Numbers from '../components/Numbers'
+import ImageSlider from '../components/ImageSlider'
 const Home = () => {
   return (
     <>
       <Hero />
+      <ImageSlider />
       {/* <Numbers /> */}
       {/* <Features />
       <BoatList />
