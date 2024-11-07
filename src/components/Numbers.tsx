@@ -1,4 +1,5 @@
 import "./styles.css";
+import { Link } from 'react-router-dom';
 import image5 from '../assets/image-5.png';
 import image6 from '../assets/image-6.jpg';
 import image7 from '../assets/image-7.png';
@@ -21,9 +22,9 @@ export default function Numbers() {
     Nos enorgullece brindarte un servicio personalizado y cercano. Nuestro equipo de expertos está aquí para ayudarte a elegir el barco que se adapte a tus necesidades, asegurándose de que tu experiencia sea única. Además, con nuestra plataforma de reservas online, alquilar un barco nunca fue tan fácil y rápido.
 </p>
         
-        <button className="bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
-            Contacta
-        </button>
+        <Link to="./Alquileres/reservas" className="bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
+            Alquileres
+        </Link>
     </section>
     
     );
