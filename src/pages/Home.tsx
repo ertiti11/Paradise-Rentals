@@ -14,8 +14,7 @@ const Home = () => {
       <BoatList />
       <Activities />
       <Testimonials />
-      <CallToAction />
-      <Contact /> */}
+      { <CallToAction */ }
     </>
   )
 }
