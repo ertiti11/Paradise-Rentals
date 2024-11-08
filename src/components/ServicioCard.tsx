@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 export default function ServicioCard(boat) {
     console.log(boat)
     return (
-        <div key={boat.id} className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+        
+        <div key={boat.id} className="bg-black rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 mt-10">
             <img src={boat.url_imagen} alt={boat.nombre} className="w-full h-56 object-cover" />
             <div className="p-6">
                 <h3 className="text-2xl font-semibold mb-2 text-paradise-dark">{boat.nombre}</h3>
