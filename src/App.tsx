@@ -7,7 +7,12 @@ import BoatProduct from './pages/BoatProduct'
 import AdminPanel from './pages/AdminPanel'
 import Alquileres from "./pages/Alquileres"
 import State from "./pages/State"
+import Contact from "./pages/Contact" 
 import Contact from "./pages/Contact"
+import Reservas from './components/Reservas'
+import ServicioCard from "./components/ServicioCard"
+
+
 
 
 
@@ -25,6 +30,7 @@ function App() {
             <Route path="/alquileres" element={<Alquileres />} />
             <Route path="/contactos" element={<Contact />} />
             <Route path="/contador" element={<State />} />
+            <Route path="/reservas" element={<Reservas />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
         </main>
