@@ -8,7 +8,7 @@ import image7 from '../assets/image-7.png';
 
 export default function Numbers() {
     return (
-        <section className="flex flex-col h-screen items-center mt-16 gap-y-10 relative">
+        <section className="flex flex-col items-center mt-16 gap-y-10 relative">
         <h2 className="text-5xl uppercase text-center text-balance flex flex-wrap justify-center items-center gap-x-2">
             Descubre la libertad de navegar 
             <img className="px-4 rounded-md w-48 h-32" src={image6} alt="Navegación" />
