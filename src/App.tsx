@@ -29,7 +29,6 @@ function App() {
             <Route path="/alquileres" element={<Alquileres />} />
             <Route path="/contactos" element={<Contact />} />
             <Route path="/contador" element={<State />} />
-            <Route path="/reservas" element={<Reservas />} />
             <Route path="/reservar" element={<Reservar />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
