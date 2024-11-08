@@ -8,7 +8,6 @@ import AdminPanel from './pages/AdminPanel'
 import Alquileres from "./pages/Alquileres"
 import State from "./pages/State"
 import Contact from "./pages/Contact" 
-import Reservas from './components/Reservas'
 import Reservar from './pages/Reservar'
 
 
