@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import BoatProduct from './pages/BoatProduct'
 import AdminPanel from './pages/AdminPanel'
-import Alquileres from "./pages/Alquileres"
 import State from "./pages/State"
 import Contact from "./pages/Contact" 
 import Reservar from './pages/Reservar'
@@ -25,7 +24,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/boat/:id" element={<BoatProduct />} />
             <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/alquileres" element={<Alquileres />} />
             <Route path="/contactos" element={<Contact />} />
             <Route path="/contador" element={<State />} />
             <Route path="/reservar" element={<Reservar />} />
