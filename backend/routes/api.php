@@ -18,5 +18,5 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('/categorias', CategoriaController::class);
     Route::apiResource('/barcos', BarcoController::class);
     #mail
-    Route::get('/mail', [MailController::class, 'sendEmail']);
+    Route::post('/mail', [MailController::class, 'sendEmail']);
 });

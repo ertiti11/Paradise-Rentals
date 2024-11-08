@@ -19,11 +19,15 @@ class MailController extends Controller
             apiKey: $apiKey,
         );
 
+        $emailAddress = $request->input('email');
+        $name = $request->input('name');
+        $phoneNumber = $request->input('phone');
+        $msg = $request->input('message');
         $email = (new MailtrapEmail())
-            ->from(new Address('yatch@demomailtrap.com', 'Mailtrap Test'))
+            ->from(new Address('info@demomailtrap.com', 'luxury yatchs'))
             ->to(new Address("vatitiprieto11@gmail.com"))
-            ->subject('You are awesome!')
-            ->text('Congrats for sending test email with Mailtrap!')
+            ->subject('Peticion de informacion')
+            ->text("Un usuario ha pedido información!!\n\nName: $name\nPhone: $phoneNumber\nEmail: $emailAddress\nMessage: $msg")
             ->category('Integration Test');
 
         $response = $mailtrap->send($email);
