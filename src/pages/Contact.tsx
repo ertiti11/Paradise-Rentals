@@ -1,6 +1,51 @@
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { useState } from 'react';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        toast.success('Mensaje enviado con éxito');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        toast.error('Error al enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Error al enviar el mensaje');
+    }
+  };
+
   return (
     <div id="contact" className="bg-black/80 py-16">
       <div className="container mx-auto my-auto">
@@ -24,19 +69,52 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <form method='POST' action="https://formsubmit.co/agm0093@alu.medac.es" className="space-y-4">
-            <input type="text" placeholder="Your Name" className="w-full p-2 border border-gray-300 rounded" name='name'/>
-            <input type="email" placeholder="Your Email" className="w-full p-2 border border-gray-300 rounded" name='email'/>
-            <textarea placeholder="Your Message" rows={4} className="w-full p-2 border border-gray-300 rounded" name='comments'></textarea>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full p-2 border border-gray-300 rounded text-black"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Your Phone"
+              className="w-full p-2 border border-gray-300 rounded text-black"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full p-2 border border-gray-300 rounded text-black"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              placeholder="Your Message"
+              rows={4}
+              className="w-full p-2 border border-gray-300 rounded text-black"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
             <button type="submit" className="bg-paradise-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300">
               Enviar mensaje
             </button>
-            <input type="hidden" name="_next" value="http://localhost:5173/contactos"/>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
