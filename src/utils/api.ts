@@ -15,3 +15,14 @@ export const getTiposBarcos = async () => {
     const response = await fetch('http://localhost:8000/api/v1/tipos');
     return await response.json();
 }
+
+
+
+
+
+//get barco by id
+
+export const getBarcoById = async (id) => {
+    const response = await fetch(`http://localhost:8000/api/v1/barcos/${id}`);
+    return await response.json();
+}

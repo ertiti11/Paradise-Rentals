@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Ruler, Anchor, MapPin, Shield } from 'lucide-react';
 import BoatSlider from './BoatSlider';
 import PassengerForm from './PassengerForm';
+import { getBarcoById } from '../utils/api';
 
 interface BoatDetailsProps {
-  boat: {
-    id: number;
-    location: string;
-    price: number;
-    length: number;
-    capacity: number;
-    imageUrl: string;
-  };
+  boatId: number;
+}
+
+interface Boat {
+  id: number;
+  nombre: string;
+  tipo: string;
+  precio_dia: number;
+  capacidad: number;
+  thumbnail: string;
+  descripcion: string;
+  longitud: number;
+  disponible: boolean;
+  categoria_id: number;
+  fotos: { id: number; barco_id: number; url: string }[];
 }
 
 interface Passenger {
@@ -23,7 +31,8 @@ interface Passenger {
   email: string;
 }
 
-export default function BoatDetails({ boat }: BoatDetailsProps) {
+export default function BoatDetails({ boatId }: BoatDetailsProps) {
+  const [boat, setBoat] = useState<Boat | null>(null);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [passengers, setPassengers] = useState<Passenger[]>([
@@ -37,15 +46,14 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
     },
   ]);
 
-  // Simulated multiple images
-  const images = [
-    boat.imageUrl,
-    'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80',
-  ];
+  useEffect(() => {
+    getBarcoById(boatId)
+      .then((data) => setBoat(data))
+      .catch((error) => console.error('Error fetching boat data:', error));
+  }, [boatId]);
 
   const addPassenger = () => {
-    if (passengers.length < boat.capacity) {
+    if (passengers.length < (boat?.capacidad || 0)) {
       setPassengers([
         ...passengers,
         {
@@ -78,6 +86,12 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
     console.log({ startDate, endDate, passengers });
   };
 
+  if (!boat) {
+    return <div>Loading...</div>;
+  }
+
+  const images = [boat.thumbnail, ...boat.fotos.map((foto) => foto.url)];
+
   return (
     <form onSubmit={handleSubmit} className="bg-gray-900 rounded-lg overflow-hidden">
       <BoatSlider images={images} />
@@ -85,15 +99,15 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
       <div className="p-8">
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Yate de Lujo en {boat.location}</h1>
+            <h1 className="text-3xl font-bold text-white mb-2">{boat.nombre} en {boat.descripcion}</h1>
             <div className="flex items-center text-gray-400">
               <MapPin className="w-4 h-4 mr-2" />
-              <span>{boat.location} Marina</span>
+              <span>{boat.descripcion} Marina</span>
             </div>
           </div>
           <div className="text-right">
             <p className="text-sm text-gray-400">Precio por día</p>
-            <p className="text-3xl font-bold text-white">{boat.price}€</p>
+            <p className="text-3xl font-bold text-white">{boat.precio_dia}€</p>
           </div>
         </div>
 
@@ -103,7 +117,7 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
               <Ruler className="w-5 h-5 mr-2" />
               <h3 className="font-semibold">Dimensiones</h3>
             </div>
-            <p className="text-white">Largo: {boat.length}m</p>
+            <p className="text-white">Largo: {boat.longitud}m</p>
           </div>
           
           <div className="bg-gray-800 p-4 rounded-lg">
@@ -111,7 +125,7 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
               <Users className="w-5 h-5 mr-2" />
               <h3 className="font-semibold">Capacidad</h3>
             </div>
-            <p className="text-white">{boat.capacity} personas</p>
+            <p className="text-white">{boat.capacidad} personas</p>
           </div>
           
           <div className="bg-gray-800 p-4 rounded-lg">
@@ -119,7 +133,7 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
               <Anchor className="w-5 h-5 mr-2" />
               <h3 className="font-semibold">Tipo</h3>
             </div>
-            <p className="text-white">Yate de Motor</p>
+            <p className="text-white">{boat.tipo}</p>
           </div>
         </div>
 
@@ -155,7 +169,7 @@ export default function BoatDetails({ boat }: BoatDetailsProps) {
           <div className="mt-8">
             <PassengerForm
               passengers={passengers}
-              maxPassengers={boat.capacity}
+              maxPassengers={boat.capacidad}
               onAddPassenger={addPassenger}
               onRemovePassenger={removePassenger}
               onUpdatePassenger={updatePassenger}

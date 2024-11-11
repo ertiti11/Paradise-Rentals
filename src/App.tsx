@@ -8,8 +8,8 @@ import AdminPanel from './pages/AdminPanel'
 import State from "./pages/State"
 import Contact from "./pages/Contact" 
 import Reservar from './pages/Reservar'
-
-
+import { useParams } from "react-router-dom"
+import BoatDetails from "./components/BoatDetails"
 
 
 
@@ -27,6 +27,7 @@ function App() {
             <Route path="/contactos" element={<Contact />} />
             <Route path="/contador" element={<State />} />
             <Route path="/reservar" element={<Reservar />} />
+            <Route path="/reservar/:boatId" element={<BoatDetailsWrapper />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
         </main>
@@ -35,5 +36,11 @@ function App() {
     </Router>
   )
 }
+
+const BoatDetailsWrapper = () => {
+  const { boatId } = useParams<{ boatId: string }>();
+
+  return <BoatDetails boatId={parseInt(boatId, 10)} />;
+};
 
 export default App
