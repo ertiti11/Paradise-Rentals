@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('tipo'); // text
             $table->decimal('precio_dia', 8, 2); // numeric
             $table->integer('capacidad'); // int4
-            $table->string('url_imagen'); // text
+            $table->string('thumbnail'); // text
             $table->string('descripcion'); // text
             $table->integer('longitud');
             $table->boolean('disponible')->default(true); // boolean
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade'); // Clave foránea
-
             $table->timestamps();
         });
+
     }
 
     /**
@@ -32,6 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('fotos');
         Schema::dropIfExists('barcos');
     }
 };

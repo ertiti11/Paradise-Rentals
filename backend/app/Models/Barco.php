@@ -30,4 +30,8 @@ class Barco extends Model
     {
         return $this->hasMany(Alquiler::class);
     }
+    public function fotos()
+    {
+        return $this->hasMany(Foto::class);
+    }
 }

@@ -14,7 +14,8 @@ class BarcoController extends Controller
     public function index()
     {
         try {
-            $barcos = Barco::all();
+            // Cargar barcos con sus fotos
+            $barcos = Barco::with('fotos')->get();
             return response()->json($barcos, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración
@@ -22,6 +23,7 @@ class BarcoController extends Controller
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
+
 
     public function show($id)
     {
