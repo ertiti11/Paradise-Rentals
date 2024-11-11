@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ClienteSeeder::class,
             BarcoSeeder::class,
             AlquilerSeeder::class,
+            ReservaSeeder::class,
         ]);
     }
 }

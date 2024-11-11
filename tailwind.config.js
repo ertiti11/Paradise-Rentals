@@ -1,4 +1,4 @@
-import { transform } from 'typescript';
+import { transform } from "typescript";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -27,6 +27,7 @@ export default {
       },
       fontFamily: {
         playfair: ['"Playfair Display"', "serif"],
+        roboto: ["Roboto Mono", "monospace"], // Ahora "sans" usará Roboto Mono
       },
     },
   },

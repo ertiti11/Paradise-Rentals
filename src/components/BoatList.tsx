@@ -12,7 +12,7 @@ const BoatList = () => {
     : boats.filter(boat => boat.category === selectedCategory)
 
   return (
-    <div id="boats" className="container mx-auto py-16">
+    <div id="boats" className="container mx-auto py-16 font-roboto">
       <h2 className="text-4xl font-bold mb-12 text-center text-paradise-dark">Nuestros alquileres</h2>
       <div className="flex justify-center mb-8 flex-wrap">
         {categories.map(category => (
