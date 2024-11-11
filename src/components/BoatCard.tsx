@@ -2,19 +2,21 @@ import { Anchor } from 'lucide-react';
 
 interface BoatCardProps {
   location: string;
-  price: number;
-  length: number;
-  capacity: number;
+  precio_dia: number;
+  longitud: number;
+  capacidad: number;
   url_imagen: string;
+  disponible: boolean;
   onBook: () => void;
 }
 
 export default function BoatCard({ 
   location, 
-  price, 
-  length, 
-  capacity, 
+  precio_dia, 
+  longitud, 
+  capacidad, 
   url_imagen,
+  disponible,
   onBook 
 }: BoatCardProps) {
   return (
@@ -32,14 +34,20 @@ export default function BoatCard({
           <Anchor className="w-5 h-5 text-teal-400" />
         </div>
         <div className="space-y-1 text-sm text-gray-300">
-          <p>Largo: {length} m</p>
-          <p>Capacidad: {capacity} personas</p>
+          <p>Largo: {longitud} m</p>
+          <p>Capacidad: {capacidad} personas</p>
+          {/* si barco disponible esto y si no en rojo*/}
+          {disponible ? (
           <p className="text-teal-400">Barco disponible</p>
+        ) : (
+            <p className="text-red-400">Barco no disponible</p>
+          )}
+          {/* <p>Barco disponible</p> */}
         </div>
         <div className="mt-4 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-400">Desde</p>
-            <p className="text-xl font-bold">{price}€ <span className="text-sm font-normal">/día</span></p>
+            <p className="text-xl font-bold">{precio_dia}€ <span className="text-sm font-normal">/día</span></p>
           </div>
           <button 
             onClick={onBook}

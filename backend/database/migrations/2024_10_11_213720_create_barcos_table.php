@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id(); // int8
             $table->string('nombre'); // text
             $table->string('tipo'); // text
-            $table->decimal('precio_por_hora', 8, 2); // numeric
+            $table->decimal('precio_dia', 8, 2); // numeric
             $table->integer('capacidad'); // int4
             $table->string('url_imagen'); // text
             $table->string('descripcion'); // text
+            $table->integer('longitud');
+            $table->boolean('disponible')->default(true); // boolean
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade'); // Clave foránea
 
             $table->timestamps();

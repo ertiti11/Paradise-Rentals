@@ -28,11 +28,13 @@ class BarcoFactory extends Factory
         return [
             'nombre' => $this->faker->word,
             'tipo' => $this->faker->word,
-            'precio_por_hora' => $this->faker->randomFloat(2, 10, 100),
+            'precio_dia' => $this->faker->randomFloat(2, 10, 100),
             'categoria_id' => Categoria::factory(), // Crea una categoría asociada
             'capacidad' => $this->faker->randomNumber(2),
             'url_imagen' => $imagenes[array_rand($imagenes)], // Selecciona una imagen aleatoria
             'descripcion' => $this->faker->sentence(10),
+            'longitud' => $this->faker->randomNumber(2),
+            'disponible' => $this->faker->boolean,
         ];
     }
 }

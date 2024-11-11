@@ -19,4 +19,5 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('/barcos', BarcoController::class);
     #mail
     Route::post('/mail', [MailController::class, 'sendEmail']);
+    Route::get('/tipos', [BarcoController::class, 'getTipos']);
 });

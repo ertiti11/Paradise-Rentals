@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,7 +8,6 @@ use Exception;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
-
 
 class BarcoController extends Controller
 {
@@ -49,7 +49,6 @@ class BarcoController extends Controller
             ]);
             Log::info('Datos validados:', $validatedData);
 
-
             $barco = Barco::create($validatedData);
             return response()->json($barco, 201);
         } catch (ValidationException $e) {
@@ -69,7 +68,6 @@ class BarcoController extends Controller
             return response()->json($barco, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración
-
             Log::error('Error al actualizar el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
@@ -83,9 +81,20 @@ class BarcoController extends Controller
             return response()->json(null, 204);
         } catch (Exception $e) {
             // Registrar el error para depuración
-
             Log::error('Error al eliminar el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
+        }
+    }
+
+    public function getTipos()
+    {
+        try {
+            $tipos = Barco::select('tipo')->distinct()->get();
+            return response()->json($tipos, 200);
+        } catch (Exception $e) {
+            // Registrar el error para depuración
+            Log::error('Error al obtener los tipos de barco: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno del servidor', 'message' => $e->getMessage()], 500);
         }
     }
 }
