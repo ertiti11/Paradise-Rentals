@@ -12,7 +12,7 @@ const Hero = () => {
         src={Video}
       ></video>
       <div className='absolute top-0 left-0 h-full w-full bg-black/50 flex flex-col items-center justify-center'>
-        <h1 className='text-white text-4xl'>Luxury Yachts</h1>
+        <h1 className='text-white text-4xl'>paradiserentals</h1>
         <Search />
       </div>
     </div>

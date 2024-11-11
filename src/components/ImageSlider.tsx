@@ -14,7 +14,7 @@ const images = [
 ];
 
 const FIXED_HEIGHT = 300;
-const IMAGE_GAP = 24;
+// const IMAGE_GAP = 24;
 
 const ImageSlider: FC = () => {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
