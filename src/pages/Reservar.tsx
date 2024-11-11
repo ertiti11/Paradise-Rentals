@@ -60,20 +60,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <header className="bg-gray-900 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Ship className="h-8 w-8 text-teal-500" />
-            <h1 className="text-2xl font-bold text-white">Boat Rentals</h1>
-          </div>
-          <nav className="flex space-x-6">
-            <a href="#" className="text-gray-300 hover:text-white">Sobre nosotros</a>
-            <a href="#" className="text-gray-300 hover:text-white">Barcos</a>
-            <a href="#" className="text-gray-300 hover:text-white">Contacto</a>
-          </nav>
-        </div>
-      </header>
-
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
