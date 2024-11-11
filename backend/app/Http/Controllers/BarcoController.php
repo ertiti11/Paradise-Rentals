@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BarcoController extends Controller
 {
@@ -28,8 +29,12 @@ class BarcoController extends Controller
     public function show($id)
     {
         try {
-            $barco = Barco::findOrFail($id);
+            $barco = Barco::with('fotos')->findOrFail($id);
             return response()->json($barco, 200);
+        } catch (ModelNotFoundException $e) {
+            // Registrar el error para depuración
+            Log::error('Barco no encontrado: ' . $e->getMessage());
+            return response()->json(['error' => 'Barco no encontrado'], 404);
         } catch (Exception $e) {
             // Registrar el error para depuración
             Log::error('Error al obtener el barco: ' . $e->getMessage());
