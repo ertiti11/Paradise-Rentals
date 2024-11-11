@@ -5,7 +5,7 @@ interface BoatCardProps {
   price: number;
   length: number;
   capacity: number;
-  imageUrl: string;
+  url_imagen: string;
   onBook: () => void;
 }
 
@@ -14,14 +14,14 @@ export default function BoatCard({
   price, 
   length, 
   capacity, 
-  imageUrl,
+  url_imagen,
   onBook 
 }: BoatCardProps) {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-[1.02]">
       <div className="relative h-48">
         <img 
-          src={imageUrl} 
+          src={url_imagen} 
           alt="Boat" 
           className="w-full h-full object-cover"
         />

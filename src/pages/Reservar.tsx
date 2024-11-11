@@ -1,67 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Ship } from 'lucide-react';
 import BoatCard from '../components/BoatCard';
 import Filters from '../components/Filters';
 import BookingPage from './BookingPage';
-
-const BOATS = [
-  {
-    id: 1,
-    location: 'Málaga',
-    price: 1000,
-    length: 42,
-    capacity: 8,
-    imageUrl: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80',
-  },
-  {
-    id: 2,
-    location: 'Málaga',
-    price: 1200,
-    length: 45,
-    capacity: 10,
-    imageUrl: 'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80',
-  },
-  {
-    id: 3,
-    location: 'Málaga',
-    price: 900,
-    length: 38,
-    capacity: 6,
-    imageUrl: 'https://images.unsplash.com/photo-1588401667987-e6292c86cbec?auto=format&fit=crop&q=80',
-  },
-];
+import { getBarcos } from '../utils/api';
 
 function App() {
-  const [filteredBoats, setFilteredBoats] = useState(BOATS);
-  const [selectedBoat, setSelectedBoat] = useState<typeof BOATS[0] | null>(null);
+  const [filteredBoats, setFilteredBoats] = useState([]);
+  const [selectedBoat, setSelectedBoat] = useState(null);
+
+  useEffect(() => {
+    getBarcos().then((boats) => {
+      setFilteredBoats(boats);
+    });
+  }, []);
 
   const handlePriceChange = (range: [number, number]) => {
-    setFilteredBoats(
-      BOATS.filter((boat) => boat.price >= range[0] && boat.price <= range[1])
+    setFilteredBoats((prevBoats) =>
+      prevBoats.filter((boat) => boat.price >= range[0] && boat.price <= range[1])
     );
   };
 
   const handleLengthChange = (length: number) => {
-    setFilteredBoats(BOATS.filter((boat) => boat.length <= length));
+    setFilteredBoats((prevBoats) =>
+      prevBoats.filter((boat) => boat.length <= length)
+    );
   };
 
   const handleTypeChange = (types: string[]) => {
     if (types.length === 0) {
-      setFilteredBoats(BOATS);
+      getBarcos().then((boats) => setFilteredBoats(boats));
     } else {
-      setFilteredBoats(BOATS.filter((boat) => types.includes(boat.type)));
+      setFilteredBoats((prevBoats) =>
+        prevBoats.filter((boat) => types.includes(boat.type))
+      );
     }
   };
 
   const handleCapacityChange = (range: [number, number]) => {
-    setFilteredBoats(
-      BOATS.filter(
+    setFilteredBoats((prevBoats) =>
+      prevBoats.filter(
         (boat) => boat.capacity >= range[0] && boat.capacity <= range[1]
       )
     );
   };
 
-  const handleBooking = (boat: typeof BOATS[0]) => {
+  const handleBooking = (boat) => {
     setSelectedBoat(boat);
   };
 
