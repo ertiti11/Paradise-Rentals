@@ -22,9 +22,10 @@ export default function Numbers() {
     Nos enorgullece brindarte un servicio personalizado y cercano. Nuestro equipo de expertos está aquí para ayudarte a elegir el barco que se adapte a tus necesidades, asegurándose de que tu experiencia sea única. Además, con nuestra plataforma de reservas online, alquilar un barco nunca fue tan fácil y rápido.
 </p>
         
-        <Link to="./Alquileres/reservas" className="bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
+        {/* <Link to="./Alquileres/reservas" className="bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
             Alquileres
-        </Link>
+        </Link> */}
+        <br />
     </section>
     
     );

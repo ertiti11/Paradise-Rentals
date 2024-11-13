@@ -6,7 +6,7 @@ const CallToAction = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4 text-white text-shadow">¿Listo para su aventura en el paraíso?</h2>
         <p className="text-xl mb-8 text-white text-shadow">Reserve ya su alquiler y cree recuerdos inolvidables en las aguas cristalinas.</p>
-        <Link to="#boats" className="bg-paradise-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-paradise-dark transition duration-300 inline-block">
+        <Link to="/reservar" className="bg-paradise-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-paradise-dark transition duration-300 inline-block">
         Explorar los alquileres
         </Link>
       </div>
