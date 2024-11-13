@@ -27,6 +27,7 @@ class BarcoFactory extends Factory
             'thumbnail' => $imagenes[array_rand($imagenes)],
             'descripcion' => $this->faker->sentence(10),
             'longitud' => $this->faker->randomNumber(2),
+            'localizacion' => $this->faker->address,
             'disponible' => $this->faker->boolean,
         ];
     }

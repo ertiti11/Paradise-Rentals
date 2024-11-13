@@ -18,8 +18,10 @@ class Barco extends Model
         "precio",
         "capacidad",
         "url_imagen",
-        "descripcion"
-
+        "descripcion",
+        "longitud",
+        "localizacion",
+        "disponible",
     ];
     public function categoria()
     {

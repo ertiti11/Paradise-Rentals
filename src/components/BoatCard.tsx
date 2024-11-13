@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface BoatCardProps {
   id: number;
+  nombre: string;
   location: string;
   precio_dia: number;
   longitud: number;
@@ -13,6 +14,7 @@ interface BoatCardProps {
 
 export default function BoatCard({ 
   id,
+  nombre,
   location, 
   precio_dia, 
   longitud, 
@@ -31,7 +33,7 @@ export default function BoatCard({
       </div>
       <div className="p-4 bg-gray-900 text-white">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-semibold">{location}</h3>
+          <h3 className="text-lg font-semibold">{nombre}</h3>
           <Anchor className="w-5 h-5 text-teal-400" />
         </div>
         <div className="space-y-1 text-sm text-gray-300">

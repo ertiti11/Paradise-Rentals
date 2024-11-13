@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('thumbnail'); // text
             $table->string('descripcion'); // text
             $table->integer('longitud');
+            $table->string("localizacion");
             $table->boolean('disponible')->default(true); // boolean
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade'); // Clave foránea
             $table->timestamps();
