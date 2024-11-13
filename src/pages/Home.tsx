@@ -4,6 +4,7 @@ import ImageScroll from '../components/ImageScroll'
 import Numbers from '../components/Numbers'
 import CallToAction from '../components/CallToAction'
 import Contact from '../pages/Contact'
+import Imagen3d from '../components/Imagen3d'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Activities />
       <Testimonials />
       { <CallToAction */ }
+      <Imagen3d />
       <CallToAction />
       <Contact/> 
 
