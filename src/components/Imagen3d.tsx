@@ -57,26 +57,22 @@ const Imagen3d = () => {
       >
         <img
           src={Imagen}
-          ref={imageRef}
           alt="imagen"
           className="w-[500px] h-[400px] rounded-lg"
         />
 
         <img
           src={Imagen}
-          ref={imageRef}
           alt=""
           className="absolute w-[300px] h-[200px] mr-[500px] object-cover z-10 rounded-lg"
         />
         <img
           src={Imagen}
-          ref={imageRef}
           alt=""
           className="absolute w-[300px] h-[200px] ml-[500px] mb-[300px] object-cover z-[-10] rounded-lg"
         />
         <img
           src={Imagen}
-          ref={imageRef}
           alt=""
           className="absolute w-[300px] h-[200px] ml-[500px] mt-[300px] mr-[100px] object-cover z-[10] rounded-lg"
         />
