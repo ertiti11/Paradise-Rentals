@@ -1,82 +1,97 @@
-import { FC, useEffect, useState } from 'react';
-import image1 from '../assets/image-1.png';
-import image2 from '../assets/image-2.png';
-import image3 from '../assets/image-3.png';
-import image4 from '../assets/image-4.png';
-import image from '../assets/image.png';
+import { cn } from "../lib/utils";
+import Marquee from "./marquee";
 
-const images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+  {
+    name: "Jane",
+    username: "@jane",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jane",
+  },
+  {
+    name: "Jenny",
+    username: "@jenny",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jenny",
+  },
+  {
+    name: "James",
+    username: "@james",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/james",
+  },
 ];
 
-const FIXED_HEIGHT = 300;
-// const IMAGE_GAP = 24;
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
 
-const ImageSlider: FC = () => {
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number }>>({});
-  const tripleImages = [...images, ...images, ...images];
-
-  useEffect(() => {
-    images.forEach(src => {
-      const img = new Image();
-      img.onload = () => {
-        setLoadedImages(prev => new Set([...prev, src]));
-        setImageDimensions(prev => ({
-          ...prev,
-          [src]: {
-            width: img.naturalWidth,
-            height: img.naturalHeight
-          }
-        }));
-      };
-      img.src = src;
-    });
-  }, []);
-
-  const getImageWidth = (src: string) => {
-    const dimensions = imageDimensions[src];
-    if (!dimensions) return FIXED_HEIGHT * 1.5;
-    
-    const aspectRatio = dimensions.width / dimensions.height;
-    return FIXED_HEIGHT * aspectRatio;
-  };
-
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
   return (
-    <div className="relative w-full overflow-hidden">
-      <div 
-        className="flex animate-scroll"
-        style={{
-          width: 'max-content',
-          willChange: 'transform'
-        }}
-      >
-        {tripleImages.map((image, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 relative px-3"
-            style={{
-              height: `${FIXED_HEIGHT}px`,
-              width: `${getImageWidth(image)}px`
-            }}
-          >
-            <img
-              src={image}
-              alt={`Yacht ${index + 1}`}
-              className={`w-full h-full rounded-lg shadow-lg transition-opacity duration-300 object-cover ${
-                loadedImages.has(image) ? 'opacity-100' : 'opacity-0'
-              }`}
-              loading="lazy"
-            />
-          </div>
-        ))}
+    <figure
+      className={cn(
+        "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
       </div>
-    </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
   );
 };
 
-export default ImageSlider;
+export default function ImageSlider() {
+  return (
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg ">
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <Marquee reverse pauseOnHover className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+     
+    </div>
+  );
+}

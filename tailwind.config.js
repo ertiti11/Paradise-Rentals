@@ -14,10 +14,20 @@ export default {
           "0%, 100%": { transform: "opacity(1)" },
           "50%": { transform: "opacity(0)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         scroll: "scroll 30s linear infinite",
         fadeIn: "fadeIn 20s linear infinite",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
       colors: {
         "paradise-blue": "#00B4DB",
