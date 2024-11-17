@@ -21,17 +21,17 @@ const ImageScroll = () => {
     <div ref={ref} className="relative flex flex-col items-center justify-center h-screen overflow-hidden">
       <motion.div
         className="absolute transform -translate-x-full z-10"
-        animate={{ x: Math.min(scrollY * 0.5, window.innerWidth / 4) }}
+        animate={{ x: Math.min(scrollY * 0.5, window.innerWidth / 6) }}
         transition={{ type: 'tween', duration: 0.5 }}
       >
-        <img src={Caribe} alt="imagen 1" className="h-[400px] w-[300px]" />
+        <img src={Caribe} alt="imagen 1" className="h-[600px] w-[400px] object-cover rounded-3xl" />
       </motion.div>
       <motion.div
         className="absolute transform translate-x-full z-10"
-        animate={{ x: Math.max(-scrollY * 0.5, -window.innerWidth / 4) }}
+        animate={{ x: Math.max(-scrollY * 0.5, -window.innerWidth / 6) }}
         transition={{ type: 'tween', duration: 1 }}
       >
-        <img src={Crucero} alt="imagen 2" className="h-[400px] w-[300px]" />
+        <img src={Crucero} alt="imagen 2" className="h-[600px] w-[400px] object-cover rounded-3xl" />
       </motion.div>
       <div className="relative z-0 text-center">
         <h1 className="text-4xl text-white">Visita el caribe</h1>
