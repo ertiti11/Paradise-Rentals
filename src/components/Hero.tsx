@@ -3,7 +3,7 @@ import "./styles.css";
 import Search from "./SearchComponent/Search";
 const Hero = () => {
   return (
-    <div className='relative bg-white/90 h-[calc(100vh-4rem)] mx-10 my-10 rounded-xl mb-40 overflow-hidden'>
+    <div className='relative bg-white/90 h-[calc(100vh-4rem)] mx-10 mt-24 rounded-xl mb-40 overflow-hidden'>
       <video
         className='absolute top-0 left-0 h-full w-full object-cover'
         autoPlay
