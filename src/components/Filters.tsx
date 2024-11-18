@@ -1,6 +1,6 @@
-import { Slider } from './Slider';
-import { useState, useEffect } from 'react';
-import { getTiposBarcos } from '../utils/api';
+import { Slider } from "./Slider";
+import { useState, useEffect } from "react";
+import { getTiposBarcos } from "../utils/api";
 
 interface FiltersProps {
   onPriceChange: (value: [number, number]) => void;
@@ -9,22 +9,26 @@ interface FiltersProps {
   onCapacityChange: (value: [number, number]) => void;
 }
 
-export default function Filters({ 
-  onPriceChange, 
-  onLengthChange, 
-  onTypeChange, 
-  onCapacityChange 
+export default function Filters({
+  onPriceChange,
+  onLengthChange,
+  onTypeChange,
+  onCapacityChange,
 }: FiltersProps) {
   const [boatTypes, setBoatTypes] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000]);
+  const [capacityRange, setCapacityRange] = useState<[number, number]>([1, 50]);
 
   useEffect(() => {
-    getTiposBarcos().then((types) => setBoatTypes(types.map(type => type.tipo)));
+    getTiposBarcos().then((types) =>
+      setBoatTypes(types.map((type) => type.tipo))
+    );
   }, []);
 
   const handleTypeChange = (type: string, isChecked: boolean) => {
-    const updatedTypes = isChecked 
-      ? [...selectedTypes, type] 
+    const updatedTypes = isChecked
+      ? [...selectedTypes, type]
       : selectedTypes.filter((t) => t !== type);
     setSelectedTypes(updatedTypes);
     onTypeChange(updatedTypes);
@@ -52,39 +56,39 @@ export default function Filters({
         <h3 className="text-white font-semibold mb-3">Precio por día</h3>
         <Slider
           min={0}
-          max={1000}
+          max={2000}
           step={50}
-          defaultValue={[0, 1000]}
-          onChange={(value) => onPriceChange(value as [number, number])}
+          defaultValue={priceRange}
+          onChange={(value) => {
+            setPriceRange(value);
+            onPriceChange(value);
+          }}
         />
       </div>
 
       <div>
         <h3 className="text-white font-semibold mb-3">Número de personas</h3>
-        <div className="flex items-center space-x-2">
-          <input
-            type="number"
-            min="1"
-            max="12"
-            className="w-16 px-2 py-1 bg-gray-800 border border-gray-700 rounded text-white"
-            onChange={(e) => onCapacityChange([parseInt(e.target.value), parseInt(e.target.value)])}
-          />
-          <span className="text-gray-400">personas</span>
-        </div>
+        <Slider
+          min={1}
+          max={50}
+          step={1}
+          defaultValue={capacityRange}
+          onChange={(value) => {
+            setCapacityRange(value);
+            onCapacityChange(value);
+          }}
+        />
       </div>
 
       <div>
         <h3 className="text-white font-semibold mb-3">Largo del barco</h3>
-        <div className="flex items-center space-x-2">
-          <input
-            type="range"
-            min="5"
-            max="50"
-            className="w-full"
-            onChange={(e) => onLengthChange(parseInt(e.target.value))}
-          />
-          <span className="text-gray-400 w-12">m</span>
-        </div>
+        <Slider
+          min={5}
+          max={100}
+          step={5}
+          defaultValue={[5, 100]}
+          onChange={(value) => onLengthChange(value[1])}
+        />
       </div>
     </div>
   );

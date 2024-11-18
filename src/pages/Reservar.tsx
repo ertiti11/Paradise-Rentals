@@ -17,10 +17,9 @@ function App() {
 
   const handlePriceChange = (range: [number, number]) => {
     setFilteredBoats((prevBoats) =>
-      prevBoats.filter((boat) => boat.price >= range[0] && boat.price <= range[1])
+      prevBoats.filter((boat) => boat.precio_dia >= range[0] && boat.precio_dia <= range[1])
     );
   };
-
   const handleLengthChange = (length: number) => {
     setFilteredBoats((prevBoats) =>
       prevBoats.filter((boat) => boat.length <= length)
@@ -32,7 +31,7 @@ function App() {
       getBarcos().then((boats) => setFilteredBoats(boats));
     } else {
       setFilteredBoats((prevBoats) =>
-        prevBoats.filter((boat) => types.includes(boat.type))
+        prevBoats.filter((boat) => types.includes(boat.tipo))
       );
     }
   };
@@ -60,7 +59,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
             <Filters
@@ -82,7 +81,7 @@ function App() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
