@@ -1,51 +1,101 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import Caribe from '../assets/caribean.webp';
-import Crucero from '../assets/crucero.webp';
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import { LayoutGrid } from "./ui/layout-grid";
 
-const ImageScroll = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const { ref, inView } = useInView({ threshold: 0.9 });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+export default function ImageScroll() {
   return (
-    <div ref={ref} className="relative flex flex-col items-center justify-center h-screen overflow-hidden">
-      <motion.div
-        className="absolute transform -translate-x-full z-10"
-        animate={{ x: Math.min(scrollY * 0.5, window.innerWidth / 6) }}
-        transition={{ type: 'tween', duration: 0.5 }}
-      >
-        <img src={Caribe} alt="imagen 1" className="h-[600px] w-[400px] object-cover rounded-3xl" />
-      </motion.div>
-      <motion.div
-        className="absolute transform translate-x-full z-10"
-        animate={{ x: Math.max(-scrollY * 0.5, -window.innerWidth / 6) }}
-        transition={{ type: 'tween', duration: 1 }}
-      >
-        <img src={Crucero} alt="imagen 2" className="h-[600px] w-[400px] object-cover rounded-3xl" />
-      </motion.div>
-      <div className="relative z-0 text-center">
-        <h1 className="text-4xl text-white">Visita el caribe</h1>
-        <div className="mt-4">
-          <a
-            href="#"
-            className="px-4 py-2 border border-white-500 rounded-lg bg-black text-white-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
-          >
-            Reservar
-          </a>
-        </div>
-      </div>
+    <div className="h-screen py-20 w-full">
+      <LayoutGrid cards={cards} />
+    </div>
+  );
+}
+
+const SkeletonOne = () => {
+  return (
+    <div>
+      <p className="font-bold md:text-4xl text-xl text-white">
+        House in the woods
+      </p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+        A serene and tranquil retreat, this house in the woods offers a peaceful
+        escape from the hustle and bustle of city life.
+      </p>
     </div>
   );
 };
 
-export default ImageScroll;
+const SkeletonTwo = () => {
+  return (
+    <div>
+      <p className="font-bold md:text-4xl text-xl text-white">
+        House above the clouds
+      </p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+        Perched high above the world, this house offers breathtaking views and a
+        unique living experience. It&apos;s a place where the sky meets home,
+        and tranquility is a way of life.
+      </p>
+    </div>
+  );
+};
+const SkeletonThree = () => {
+  return (
+    <div>
+      <p className="font-bold md:text-4xl text-xl text-white">
+        Greens all over
+      </p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
+        perfect place to relax, unwind, and enjoy life.
+      </p>
+    </div>
+  );
+};
+const SkeletonFour = () => {
+  return (
+    <div>
+      <p className="font-bold md:text-4xl text-xl text-white">
+        Rivers are serene
+      </p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+        A house by the river is a place of peace and tranquility. It&apos;s the
+        perfect place to relax, unwind, and enjoy life.
+      </p>
+    </div>
+  );
+};
+
+const cards = [
+  {
+    id: 1,
+    content: <SkeletonOne />,
+    className: "md:col-span-2",
+    thumbnail:
+      "https://media.gettyimages.com/id/1419016061/es/foto/copas-de-c%C3%B3ctel-en-mesa.jpg?s=612x612&w=0&k=20&c=GUrOQ11ps7sGTQNps_npc1APoT0pv0scLq4c9C5ZFuE=",
+  },
+  {
+    id: 2,
+    content: <SkeletonTwo />,
+    className: "col-span-1",
+    thumbnail:
+      "https://media.gettyimages.com/id/1442027343/es/foto/luxury-yacht-moored-in-the-marina-of-barcelona.jpg?s=612x612&w=0&k=20&c=DhLzWao0f4B8CB8JEkprn-p36FWm9LLVsrb_Owg4tRQ=",
+  },
+  {
+    id: 3,
+    content: <SkeletonThree />,
+    className: "col-span-1",
+    thumbnail:
+      "https://media.gettyimages.com/id/1306536616/es/foto/pareja-enamorada-disfrutando-de-vacaciones-de-verano-en-un-yate-en-zakynthos-grecia-playa.jpg?s=612x612&w=0&k=20&c=v6M2apCJYdfEeVT3TZB6id_9Alo7NlZm77ES-5KsDSo=",
+  },
+  {
+    id: 4,
+    content: <SkeletonFour />,
+    className: "md:col-span-2",
+    thumbnail:
+      "https://media.gettyimages.com/id/1311491689/es/foto/yate-de-lujo.jpg?s=612x612&w=0&k=20&c=r276cM1l-7OJDOGwh8BkcJOo7zwJIrboAC-1GA9jj80=",
+  },
+];
