@@ -108,7 +108,7 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
   const images = [boat.thumbnail, ...boat.fotos.map((foto) => foto.url)];
 
   return (
-    <section className='w-full flex justify-center'>
+    <section className='w-full flex justify-center mt-24'>
       <form onSubmit={handleSubmit} className="bg-gray-900 max-w-[90%] rounded-lg overflow-hidden font-roboto">
         <BoatSlider images={images} />
 

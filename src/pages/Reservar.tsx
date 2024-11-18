@@ -58,7 +58,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-950 mt-24">
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
