@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, Ruler, Anchor, MapPin, Shield } from 'lucide-react';
 import BoatSlider from './BoatSlider';
 import PassengerForm from './PassengerForm';
 import { getBarcoById } from '../utils/api';
-import { section } from 'framer-motion/client';
+import autoAnimate from '@formkit/auto-animate';
 
 interface BoatDetailsProps {
   boatId: number;
@@ -47,6 +47,16 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
       email: '',
     },
   ]);
+
+  // Refs para autoAnimate
+  const passengersRef = useRef(null);
+  const additionalInfoRef = useRef(null);
+
+  useEffect(() => {
+    // Activar AutoAnimate en las áreas relevantes
+    passengersRef.current && autoAnimate(passengersRef.current);
+    additionalInfoRef.current && autoAnimate(additionalInfoRef.current);
+  }, []);
 
   useEffect(() => {
     getBarcoById(boatId)
@@ -108,7 +118,7 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
   const images = [boat.thumbnail, ...boat.fotos.map((foto) => foto.url)];
 
   return (
-    <section className='w-full flex justify-center mt-24'>
+    <section className="w-full flex justify-center mt-24">
       <form onSubmit={handleSubmit} className="bg-gray-900 max-w-[90%] rounded-lg overflow-hidden font-roboto">
         <BoatSlider images={images} />
 
@@ -128,7 +138,7 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
           </div>
 
           {/* Información adicional */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div ref={additionalInfoRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div className="bg-gray-800 p-4 rounded-lg">
               <div className="flex items-center text-teal-400 mb-2">
                 <Ruler className="w-5 h-5 mr-2" />
@@ -188,7 +198,7 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
               <h3 className="text-xl font-semibold text-white">Precio Total: {totalPrice}€</h3>
             </div>
 
-            <div className="mt-8">
+            <div ref={passengersRef} className="mt-8">
               <PassengerForm
                 passengers={passengers}
                 maxPassengers={boat.capacidad}
@@ -220,6 +230,5 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
         </div>
       </form>
     </section>
-
   );
 }

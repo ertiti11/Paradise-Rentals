@@ -24,6 +24,7 @@ export default function PassengerForm({
   onRemovePassenger,
   onUpdatePassenger,
 }: PassengerFormProps) {
+  
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
