@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Users, Ruler, Anchor, MapPin, Shield } from 'lucide-react';
 import BoatSlider from './BoatSlider';
 import PassengerForm from './PassengerForm';
 import { getBarcoById } from '../utils/api';
 import autoAnimate from '@formkit/auto-animate';
+import axios from 'axios'; 
+
+
 
 interface BoatDetailsProps {
   boatId: number;
@@ -33,6 +37,7 @@ interface Passenger {
 }
 
 export default function BoatDetails({ boatId }: BoatDetailsProps) {
+  let navigate = useNavigate();
   const [boat, setBoat] = useState<Boat | null>(null);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -106,9 +111,33 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
     );
   };
 
+  const createReserva = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/api/v1/reservar', {
+        barco_id: boat?.id,
+        fecha_inicio: startDate,
+        fecha_fin: endDate,
+        precio_total: totalPrice,
+        nombre_cliente: passengers[0].name,
+        apellidos_cliente: passengers[0].surname,
+        email_cliente: passengers[0].email,
+        estado: 'pendiente',
+        metodo_pago: 'tarjeta',
+        codigo_reserva: `RES-${Date.now()}`,
+        dni_cliente: passengers[0].dni,
+        telefono_cliente: passengers[0].phone,
+      });
+      console.log('Reserva creada:', response.data);
+      const reservationId = response.data.codigo_confirmacion;
+      navigate(`/reserva/${reservationId}`);
+    } catch (error) {
+      console.error('Error creando la reserva:', error);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ startDate, endDate, passengers, totalPrice });
+    createReserva();
   };
 
   if (!boat) {

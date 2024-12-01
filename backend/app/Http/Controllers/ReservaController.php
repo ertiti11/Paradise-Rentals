@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reserva;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -13,14 +14,13 @@ class ReservaController extends Controller
     public function index()
     {
         try {
-            $reservas = Reserva::with('barco')->get();
+            $reservas = Reserva::with('barco', 'cliente')->get();
             return response()->json($reservas, 200);
         } catch (\Exception $e) {
             Log::error('Error al obtener las reservas: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
-
 
     public function store(Request $request)
     {
@@ -44,7 +44,22 @@ class ReservaController extends Controller
         }
 
         try {
-            $reserva = Reserva::create($request->all());
+            // Crear o encontrar el cliente
+            $cliente = Cliente::firstOrCreate(
+                ['email' => $request->input('email_cliente')],
+                [
+                    'nombre' => $request->input('nombre_cliente'),
+                    'apellidos' => $request->input('apellidos_cliente'),
+                    'dni' => $request->input('dni_cliente'),
+                    'telefono' => $request->input('telefono_cliente')
+                ]
+            );
+
+            // Crear la reserva
+            $reserva = Reserva::create(array_merge(
+                $request->all(),
+                ['cliente_id' => $cliente->id]
+            ));
 
             // Marcar el barco como no disponible
             $barco = Barco::find($request->input('barco_id'));
@@ -57,11 +72,10 @@ class ReservaController extends Controller
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
-
-    public function show($id)
+    public function show($codigo_reserva)
     {
         try {
-            $reserva = Reserva::with('barco')->findOrFail($id);
+            $reserva = Reserva::with(['cliente', 'barco'])->where('codigo_reserva', $codigo_reserva)->firstOrFail();
             return response()->json($reserva, 200);
         } catch (\Exception $e) {
             Log::error('Error al obtener la reserva: ' . $e->getMessage());

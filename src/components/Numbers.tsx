@@ -6,7 +6,7 @@ import image7 from "../assets/image-7.png";
 
 export default function Numbers() {
   return (
-    <section className="flex flex-col items-center mt-16 gap-y-10 relative">
+    <section className="flex flex-col my-20 items-center mt-16 gap-y-10 relative px-16">
       <h2 className="text-5xl uppercase text-center text-pretty flex flex-wrap justify-center items-center gap-x-2 max-w-full">
         Descubre la libertad de navegar
         <img
@@ -23,7 +23,7 @@ export default function Numbers() {
         para explorar destinos únicos y vivir experiencias inolvidables en el mar.
       </h2>
 
-      <p className="text-center mx-20 text-xl leading-relaxed">
+      <p className="text-center mx-20 text-xl leading-relaxed font-roboto">
         En <b className="text-blue-400">Yacht Vacations</b>, nos apasiona
         ofrecerte experiencias inolvidables en el mar. Ya sea que busques
         relajarte en aguas tranquilas, explorar costas ocultas o disfrutar de un

@@ -32,4 +32,10 @@ class Reserva extends Model
     {
         return $this->belongsTo(Barco::class);
     }
+ 
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
 }

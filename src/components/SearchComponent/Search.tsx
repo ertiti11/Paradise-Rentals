@@ -77,7 +77,7 @@ export default function Search() {
 
           <button
             onClick={handleSearch}
-            className="bg-teal-500 text-white p-3 rounded-xl w-full hover:bg-teal-600 transition-all"
+            className="bg-paradise-blue font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300"
           >
             Buscar
           </button>

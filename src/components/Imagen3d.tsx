@@ -68,10 +68,8 @@ import Imagen from "../assets/image-6.jpg";
 export default function Imagen3d() {
   return (
     <div>
-      <div className="ml-[700px]">
-        <h1 className="text-4xl font-bold">Costa Concordia</h1>
-        <br />
-        <br />
+      <div className=" my-20 w-full justify-center items-center">
+        <h1 className="text-5xl text-center font-bold">Costa Concordia</h1>
       </div>
       <CardContainer className="inter-var">
         <CardBody className="w-full">

@@ -30,7 +30,7 @@ const Hero = () => {
 
         <button
           onClick={openModal}
-          className="bg-teal-500 text-white p-3 rounded-xl hover:bg-teal-600 transition-all mt-10 opacity-0 animate-fade-slide-up hover:scale-105 active:scale-95"
+          className="bg-paradise-blue font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300 mt-20"
           style={{ animationDelay: '0.6s' }}
         >
           Reserva ahora
@@ -54,7 +54,7 @@ const Hero = () => {
 
               <button
                 onClick={closeModal}
-                className="bg-red-500 text-white p-2 rounded-xl mt-4 hover:bg-red-600 transition-all hover:scale-105 active:scale-95"
+                className=" bg-red-600 w-full font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300"
               >
                 Cerrar
               </button>

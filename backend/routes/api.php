@@ -22,10 +22,13 @@ Route::group(['prefix' => 'v1'], function () {
 
 
     Route::get('/tipos', [BarcoController::class, 'getTipos']);
-    Route::post('/reservar', [BarcoController::class, 'store']);
+    // Route::post('/reservar', [BarcoController::class, 'store']);
+    Route::post('/reservar', [ReservaController::class, 'store']);
 
 
     Route::get('/reservas', [ReservaController::class, 'index']);
+    Route::get('/reservas/{reserva}', [ReservaController::class, 'show']);
+
     //404
     Route::fallback(function () {
         return response()->json(['message' => 'Not Found!'], 404);

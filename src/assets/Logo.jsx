@@ -3,7 +3,7 @@ import React from 'react'
 export default function Logo({ className }) {
   return (
     <svg width="279.59999999999997" height="169.78271888176798" viewBox="0 -20 350 212.53201576759227"
-    class={`${className}`}>
+    className={`${className}`}>
     <defs id="SvgjsDefs2398"></defs>
     <g id="SvgjsG2399" featurekey="symbolContainer"
         transform="matrix(0.9049119101306032,0,0,0.9049119101306032,81.00031628629213,-19.999843906458143)"

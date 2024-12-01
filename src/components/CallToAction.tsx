@@ -13,13 +13,13 @@ const CallToAction = () => {
         <h2 className="text-4xl font-bold mb-4 text-white text-shadow">
           ¿Listo para su aventura en el paraíso?
         </h2>
-        <p className="text-xl mb-8 text-white text-shadow">
+        <p className="text-xl mb-8 text-white text-shadow font-roboto">
           Reserve ya su alquiler y cree recuerdos inolvidables en las aguas
           cristalinas.
         </p>
         <Link
           to="/reservar"
-          className="bg-paradise-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-paradise-dark transition duration-300 inline-block"
+          className="bg-paradise-blue font-roboto text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-paradise-dark transition duration-300 inline-block"
         >
           Explorar los alquileres
         </Link>

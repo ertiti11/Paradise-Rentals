@@ -42,19 +42,19 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <Link
             to="/"
-            className="px-4 py-2 border border-white rounded-lg bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
+            className="px-4 py-2 border border-white rounded-full bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
           >
             Sobre nosotros
           </Link>
           <Link
             to="/reservar"
-            className="px-4 py-2 border border-white rounded-lg bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
+            className="px-4 py-2 border border-white rounded-full bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
           >
             Barcos
           </Link>
           <Link
             to="/contactos"
-            className="px-4 py-2 border border-blue-500 rounded-lg bg-white text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
+            className="px-4 py-2 border border-blue-500 rounded-full bg-white text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
           >
             Contacto
           </Link>

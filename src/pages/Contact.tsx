@@ -47,7 +47,7 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="bg-black/80 py-16">
+    <div id="contact" className=" py-16 mt-32">
       <div className="container mx-auto my-auto">
         <h2 className="text-4xl font-bold text-center mb-12 text-paradise-dark">Contáctanos</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -72,7 +72,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Su nombre"
               className="w-full p-2 border border-gray-300 rounded text-black"
               name="name"
               value={formData.name}
@@ -81,7 +81,7 @@ const Contact = () => {
             />
             <input
               type="text"
-              placeholder="Your Phone"
+              placeholder="Su teléfono"
               className="w-full p-2 border border-gray-300 rounded text-black"
               name="phone"
               value={formData.phone}
@@ -90,7 +90,7 @@ const Contact = () => {
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Su email"
               className="w-full p-2 border border-gray-300 rounded text-black"
               name="email"
               value={formData.email}
@@ -98,7 +98,7 @@ const Contact = () => {
               required
             />
             <textarea
-              placeholder="Your Message"
+              placeholder="Tu mensaje"
               rows={4}
               className="w-full p-2 border border-gray-300 rounded text-black"
               name="message"
@@ -106,7 +106,7 @@ const Contact = () => {
               onChange={handleChange}
               required
             ></textarea>
-            <button type="submit" className="bg-paradise-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300">
+            <button type="submit" className="bg-paradise-blue font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300">
               Enviar mensaje
             </button>
           </form>

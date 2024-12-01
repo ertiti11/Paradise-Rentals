@@ -12,15 +12,10 @@ const Home = () => {
       <Hero />
       <ImageSlider />
       <ImageScroll />
-      <Numbers /> 
-      {/* <Features />
-      <BoatList />
-      <Activities />
-      <Testimonials />
-      { <CallToAction */ }
       <Imagen3d />
+      <Numbers />
       <CallToAction />
-      <Contact/> 
+      <Contact />
 
     </>
   )

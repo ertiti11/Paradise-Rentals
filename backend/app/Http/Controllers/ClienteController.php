@@ -18,13 +18,13 @@ class ClienteController extends Controller
     {
         $filter = new ClientFilter();
         $query = $filter->transform($request);
-        $includeAlquileres = $request->query('includeAlquileres',default:'false');
-        //
+        $includeAlquileres = $request->query('includeAlquileres', 'false');
+
         $clientes = Cliente::where($query);
         if ($includeAlquileres) {
             $clientes = $clientes->with('alquileres');
         }
-        return new ClienteResource($clientes->paginate()->appends($request->query()));
+        return ClienteResource::collection($clientes->paginate()->appends($request->query()));
     }
 
     /**
@@ -32,7 +32,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        // No es necesario en API
     }
 
     /**
@@ -40,7 +40,8 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        //
+        $cliente = Cliente::create($request->validated());
+        return new ClienteResource($cliente);
     }
 
     /**
@@ -48,7 +49,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return new ClienteResource($cliente);
     }
 
     /**
@@ -56,7 +57,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        // No es necesario en API
     }
 
     /**
@@ -64,7 +65,8 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
-        //
+        $cliente->update($request->validated());
+        return new ClienteResource($cliente);
     }
 
     /**
@@ -72,6 +74,7 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return response()->json(null, 204);
     }
 }
