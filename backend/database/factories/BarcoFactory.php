@@ -5,10 +5,13 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Barco;
 use App\Models\Categoria;
+use App\Models\Reserva;
 use App\Models\Foto;
 
 class BarcoFactory extends Factory
 {
+    protected $model = Barco::class;
+
     public function definition(): array
     {
         $imagenes = [
@@ -23,11 +26,12 @@ class BarcoFactory extends Factory
             'tipo' => $this->faker->word,
             'precio_dia' => $this->faker->randomFloat(2, 10, 100),
             'categoria_id' => Categoria::factory(),
-            'capacidad' => $this->faker->randomNumber(2),
+            'capacidad' => $this->faker->numberBetween(1, 10),
             'thumbnail' => $imagenes[array_rand($imagenes)],
             'descripcion' => $this->faker->sentence(10),
-            'longitud' => $this->faker->randomNumber(2),
+            'longitud' => $this->faker->randomFloat(2, 5, 20),
             'localizacion' => $this->faker->address,
+            'reserva_id' => null, // Inicialmente nulo; se asignará después
             'disponible' => $this->faker->boolean,
         ];
     }
@@ -35,9 +39,14 @@ class BarcoFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Barco $barco) {
-            Foto::factory()->count(rand(1, 3))->create([
-                'barco_id' => $barco->id,
-            ]);
+            // Crear una reserva asociada al barco
+            $reserva = Reserva::factory()->create(['barco_id' => $barco->id]);
+
+            // Actualizar el barco con el reserva_id
+            $barco->update(['reserva_id' => $reserva->id]);
+
+            // Crear fotos para el barco
+            Foto::factory()->count(rand(1, 3))->create(['barco_id' => $barco->id]);
         });
     }
 }

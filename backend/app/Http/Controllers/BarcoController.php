@@ -12,11 +12,19 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BarcoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try {
-            // Cargar barcos con sus fotos
-            $barcos = Barco::with('fotos')->get();
+            // Obtener el número de pasajeros del request
+            $pasajeros = $request->input('pasajeros');
+
+            // Cargar barcos con sus fotos y aplicar el filtro de pasajeros si está presente
+            $query = Barco::with('fotos');
+            if ($pasajeros) {
+                $query->where('capacidad', '>=', $pasajeros);
+            }
+            $barcos = $query->get();
+
             return response()->json($barcos, 200);
         } catch (Exception $e) {
             // Registrar el error para depuración

@@ -1,30 +1,47 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { getBarcosLocations } from "../../utils/api";
 export default function Search() {
-  const [barco, setBarco] = useState("");
+  const [localizacion, setLocalizacion] = useState("");
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFinal, setFechaFinal] = useState("");
   const [pasajeros, setPasajeros] = useState(1);
 
   const handleSearch = () => {
     // Lógica de búsqueda aquí
-    console.log({ barco, fechaInicio, fechaFinal, pasajeros });
+    console.log({ localizacion, fechaInicio, fechaFinal, pasajeros });
   };
+
+  const [locations, setLocations] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const locs = await getBarcosLocations();
+      console.log(locs)
+      setLocations(locs);
+      console.log(locs);
+    };
+
+    fetchLocations();
+  }, []);
 
   return (
     <div className="top-0 left-0 w-full h-full flex items-center justify-center">
-      <div className="bg-white/30 backdrop-blur-md p-8 rounded-3xl shadow-xl flex flex-col items-center space-y-6">
-        <h2 className="text-2xl text-white font-semibold">Busca tu barco</h2>
 
         <div className="flex flex-col w-full max-w-lg space-y-4">
           <div className="flex flex-col">
-            <label className="text-white text-sm mb-2">Barco</label>
-            <input
-              type="text"
-              value={barco}
-              onChange={(e) => setBarco(e.target.value)}
-              className="p-3 border-2 border-gray-300 rounded-xl bg-transparent text-white focus:ring-2 focus:ring-teal-500 focus:outline-none"
-            />
+            <label className="text-white text-sm mb-2">Localización</label>
+            <select
+              value={localizacion}
+              onChange={(e) => setLocalizacion(e.target.value)}
+              className="p-3 border-2 border-gray-300 rounded-xl bg-transparent text-white focus:ring-2 focus:ring-teal-500 focus:outline-none max-h-40 overflow-y-auto"
+            >
+              <option value="">Selecciona una localización</option>
+              {locations.map((location, index) => (
+                <option key={index} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex flex-col">
@@ -65,7 +82,6 @@ export default function Search() {
             Buscar
           </button>
         </div>
-      </div>
     </div>
   );
 }

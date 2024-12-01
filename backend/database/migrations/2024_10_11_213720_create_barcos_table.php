@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('longitud');
             $table->string("localizacion");
             $table->boolean('disponible')->default(true); // boolean
+            // foregin key de de reserva
+            $table->foreignId('reserva_id')->nullable()->constrained('reservas')->nullOnDelete(); // <- Aquí permites NULL
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade'); // Clave foránea
             $table->timestamps();
         });

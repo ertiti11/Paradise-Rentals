@@ -6,6 +6,7 @@ use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Barco;
 
 class ReservaController extends Controller
 {
@@ -19,6 +20,7 @@ class ReservaController extends Controller
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
+
 
     public function store(Request $request)
     {
@@ -43,6 +45,12 @@ class ReservaController extends Controller
 
         try {
             $reserva = Reserva::create($request->all());
+
+            // Marcar el barco como no disponible
+            $barco = Barco::find($request->input('barco_id'));
+            $barco->disponible = false;
+            $barco->save();
+
             return response()->json($reserva, 201);
         } catch (\Exception $e) {
             Log::error('Error al crear la reserva: ' . $e->getMessage());
