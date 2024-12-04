@@ -72,4 +72,30 @@ class DashboardController extends Controller
     {
         //
     }
+
+    /**
+     * Calculate 30% of all incoming.
+     */
+    public function ganancias()
+    {
+        $totalIncoming = $this->allIncoming();
+        $ganancias = $totalIncoming * 0.3;
+        return number_format($ganancias, 2, '.', '');
+    }
+
+    /**
+     * Combine allIncoming and allReservas into a single JSON response.
+     */
+    public function combinedData()
+    {
+        $totalIncoming = $this->allIncoming();
+        $totalReservas = $this->allReservas();
+        $totalGanancias = $this->ganancias();
+
+        return response()->json([
+            'total_incoming' => number_format($totalIncoming, 2, '.', ''),
+            'total_reservas' => $totalReservas,
+            'total_ganancias' => $totalGanancias
+        ]);
+    }
 }
