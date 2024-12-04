@@ -128,7 +128,8 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
         telefono_cliente: passengers[0].phone,
       });
       console.log('Reserva creada:', response.data);
-      const reservationId = response.data.codigo_confirmacion;
+      const reservationId = response.data.codigo_reserva;
+      console.log('reservationId:', reservationId);
       navigate(`/reserva/${reservationId}`);
     } catch (error) {
       console.error('Error creando la reserva:', error);
