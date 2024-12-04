@@ -38,7 +38,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('/clientes', [ClienteController::class, 'index']);
 
 
-
+    
 
     //404
     Route::fallback(function () {

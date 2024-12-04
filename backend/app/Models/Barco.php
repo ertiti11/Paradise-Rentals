@@ -13,15 +13,17 @@ class Barco extends Model
     use HasFactory;
 
     protected $fillable = [
-        "nombre",
-        "tipo",
-        "precio",
-        "capacidad",
-        "url_imagen",
-        "descripcion",
-        "longitud",
-        "localizacion",
-        "disponible",
+        'nombre',
+        'tipo',
+        'precio_dia',
+        'capacidad',
+        'thumbnail',
+        'descripcion',
+        'longitud',
+        'localizacion',
+        'disponible',
+        'reserva_id',
+        'categoria_id',
     ];
     public function categoria()
     {

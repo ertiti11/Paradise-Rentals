@@ -33,7 +33,6 @@ class BarcoController extends Controller
         }
     }
 
-
     public function show($id)
     {
         try {
@@ -56,11 +55,15 @@ class BarcoController extends Controller
             $validatedData = $request->validate([
                 'nombre' => 'required|string|max:255',
                 'tipo' => 'required|string|max:255',
-                'precio_por_hora' => 'required|numeric',
-                'categoria_id' => 'required|integer|exists:categorias,id',
+                'precio_dia' => 'required|numeric',
                 'capacidad' => 'required|integer',
-                'url_imagen' => 'required|url',
+                'thumbnail' => 'required|string',
                 'descripcion' => 'required|string',
+                'longitud' => 'required|integer',
+                'localizacion' => 'required|string',
+                'disponible' => 'required|boolean',
+                'reserva_id' => 'nullable|integer|exists:reservas,id',
+                'categoria_id' => 'required|integer|exists:categorias,id',
             ]);
             Log::info('Datos validados:', $validatedData);
 
