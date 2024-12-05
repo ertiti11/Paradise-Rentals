@@ -35,7 +35,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/reservar', [ReservaController::class, 'store']);
     Route::get('/reservas', [ReservaController::class, 'index']);
     Route::get('/reservas/{reserva}', [ReservaController::class, 'show']);
-
+    Route::put('/reservas/{reserva}', [ReservaController::class, 'update']);
     // Ruta para el dashboard
     Route::get('/dashboard', [DashboardController::class, 'combinedData']);
 

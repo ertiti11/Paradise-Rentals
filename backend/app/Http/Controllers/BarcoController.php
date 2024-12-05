@@ -56,7 +56,7 @@ class BarcoController extends Controller
                 'nombre' => 'required|string|max:255',
                 'tipo' => 'required|string|max:255',
                 'precio_dia' => 'required|numeric',
-                'capacidad' => 'required|integer',
+                'capacidad' => 'required',
                 'thumbnail' => 'required|string',
                 'descripcion' => 'required|string',
                 'longitud' => 'required|integer',
@@ -106,7 +106,7 @@ class BarcoController extends Controller
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
-    
+
 
     public function destroy($id)
     {
