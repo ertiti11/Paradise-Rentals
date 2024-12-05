@@ -10,7 +10,7 @@ function ReservationConfirmation() {
   const [reservationData, setReservationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/v1/reservas/${reservaId}`)
+    fetch(`${import.meta.env.VITE_API_URL}/reservas/${reservaId}`)
       .then(response => response.json())
       .then(data => {
         setReservationData(data);

@@ -22,7 +22,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/v1/mail', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/mail`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
