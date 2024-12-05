@@ -113,7 +113,7 @@ export default function BoatDetails({ boatId }: BoatDetailsProps) {
 
   const createReserva = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/reservar', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/reservar`, {
         barco_id: boat?.id,
         fecha_inicio: startDate,
         fecha_fin: endDate,
