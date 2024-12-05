@@ -81,15 +81,32 @@ class BarcoController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            $validatedData = $request->validate([
+                'nombre' => 'sometimes|required|string|max:255',
+                'tipo' => 'sometimes|required|string|max:255',
+                'precio_dia' => 'sometimes|required|numeric',
+                'capacidad' => 'sometimes|required|integer',
+                'thumbnail' => 'sometimes|required|string',
+                'descripcion' => 'sometimes|required|string',
+                'longitud' => 'sometimes|required|integer',
+                'localizacion' => 'sometimes|required|string',
+                'disponible' => 'sometimes|required|boolean',
+                'reserva_id' => 'sometimes|nullable|integer|exists:reservas,id',
+                'categoria_id' => 'sometimes|required|integer|exists:categorias,id',
+            ]);
+
             $barco = Barco::findOrFail($id);
-            $barco->update($request->all());
+            $barco->update($validatedData);
             return response()->json($barco, 200);
+        } catch (ValidationException $e) {
+            Log::error('Error de validación al actualizar el barco: ' . $e->getMessage());
+            return response()->json(['error' => 'Error de validación', 'messages' => $e->errors()], 422);
         } catch (Exception $e) {
-            // Registrar el error para depuración
             Log::error('Error al actualizar el barco: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
+    
 
     public function destroy($id)
     {
