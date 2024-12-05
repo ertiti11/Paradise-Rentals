@@ -36,6 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('/reservas', [ReservaController::class, 'index']);
     Route::get('/reservas/{reserva}', [ReservaController::class, 'show']);
     Route::put('/reservas/{reserva}', [ReservaController::class, 'update']);
+    Route::delete('/reservas/{reserva}', [ReservaController::class, 'destroy']);
     // Ruta para el dashboard
     Route::get('/dashboard', [DashboardController::class, 'combinedData']);
 
