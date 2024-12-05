@@ -7,6 +7,9 @@ interface Passenger {
   dni: string;
   phone: string;
   email: string;
+  numeroTarjeta: string;
+  cvv: string;
+  expireDate: string;
 }
 
 interface PassengerFormProps {
@@ -116,6 +119,65 @@ export default function PassengerForm({
                 type="email"
                 value={passenger.email}
                 onChange={(e) => onUpdatePassenger(passenger.id, 'email', e.target.value)}
+                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                required
+              />
+            </div>
+            
+          </div>
+        </div>
+      ))}
+            {passengers.map((passenger, index) => (
+        <div key={passenger.id} className="bg-gray-800 p-6 rounded-lg relative">
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-lg font-medium text-white">
+              {index === 0 ? 'Pago con Tarjeta' : `Pasajero ${index + 1}`}
+            </h4>
+            {index !== 0 && (
+              <button
+                onClick={() => onRemovePassenger(passenger.id)}
+                className="text-gray-400 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className='md:col-span-2'>
+              <label className="block text-sm font-medium text-gray-400 mb-1">
+                Numero de tarjeta
+              </label>
+              <input
+                type="text"
+                value={passenger.numeroTarjeta}
+                onChange={(e) => onUpdatePassenger(passenger.id, 'numeroTarjeta', e.target.value)}
+                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-400 mb-1">
+                Fecha de expiración
+              </label>
+              <input
+                type="text"
+                value={passenger.expireDate}
+                onChange={(e) => onUpdatePassenger(passenger.id, 'expireDate', e.target.value)}
+                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-400 mb-1">
+                CVV
+              </label>
+              <input
+                type="tel"
+                value={passenger.cvv}
+                onChange={(e) => onUpdatePassenger(passenger.id, 'cvv', e.target.value)}
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                 required
               />
