@@ -18,8 +18,10 @@ const SkeletonOne = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Paradise Rentals dispone de una amplia y lujosa variedad de barcos diseñados especialmente para aquellos con gustos
-         refinados y un estilo de vida exclusivo, que buscan disfrutar de experiencias únicas en el mar.
+        Paradise Rentals dispone de una amplia y lujosa variedad de barcos
+        diseñados especialmente para aquellos con gustos refinados y un estilo
+        de vida exclusivo, que buscan disfrutar de experiencias únicas en el
+        mar.
       </p>
     </div>
   );
@@ -33,9 +35,10 @@ const SkeletonTwo = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-      Paradise Rentals ofrece una gran variedad de tipos de barcos, cuidadosamente seleccionados para satisfacer las necesidade
-       y deseos de los amantes de la navegación, desde embarcaciones elegantes y modernas hasta opciones clásicas y sofisticadas.
-
+        Paradise Rentals ofrece una gran variedad de tipos de barcos,
+        cuidadosamente seleccionados para satisfacer las necesidade y deseos de
+        los amantes de la navegación, desde embarcaciones elegantes y modernas
+        hasta opciones clásicas y sofisticadas.
       </p>
     </div>
   );
@@ -48,8 +51,10 @@ const SkeletonThree = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Paradise Rentals es, sin duda, la mejor opción para quienes desean disfrutar de una experiencia única e inigualable de lujo en el mar,
-         combinando embarcaciones de alta gama, servicios exclusivos y destinos paradisíacos que convierten cada travesía en un recuerdo inolvidable.
+        Paradise Rentals es, sin duda, la mejor opción para quienes desean
+        disfrutar de una experiencia única e inigualable de lujo en el mar,
+        combinando embarcaciones de alta gama, servicios exclusivos y destinos
+        paradisíacos que convierten cada travesía en un recuerdo inolvidable.
       </p>
     </div>
   );
@@ -58,12 +63,14 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-       Mejora la vida del mar con Paradise Rentals
+        Mejora la vida del mar con Paradise Rentals
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Descubre nuestros innovadores barcos eléctricos, diseñados especialmente para ofrecer una experiencia de navegación sostenible y respetuosa
-         con el medio ambiente, mientras contribuyes activamente a la protección y conservación de los valiosos fondos marinos y su biodiversidad única.
+        Descubre nuestros innovadores barcos eléctricos, diseñados especialmente
+        para ofrecer una experiencia de navegación sostenible y respetuosa con
+        el medio ambiente, mientras contribuyes activamente a la protección y
+        conservación de los valiosos fondos marinos y su biodiversidad única.
       </p>
     </div>
   );

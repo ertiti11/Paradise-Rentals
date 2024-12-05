@@ -2,6 +2,7 @@ import Video from "../assets/Video.mp4";
 import { useState } from "react";
 import "./styles.css";
 import Search from "./SearchComponent/Search";
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,15 +27,13 @@ const Hero = () => {
       <div className="absolute top-0 left-0 h-full w-full bg-black/50 flex flex-col items-center justify-start">
         <h1 className="text-white text-8xl font-bold mt-96 opacity-0 animate-fade-slide-up" style={{ animationDelay: '0.3s' }}>
           Paradise Rental's
-        </h1>
-
-        <button
-          onClick={openModal}
-          className="bg-paradise-blue font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300 mt-20"
-          style={{ animationDelay: '0.6s' }}
-        >
-          Reserva ahora
-        </button>
+        </h1>       
+        <Link
+            to="/reservar"
+            className="bg-paradise-blue font-roboto text-white px-6 py-3 rounded-full font-semibold hover:bg-paradise-dark transition duration-300 mt-20"
+          >
+            Reservar
+          </Link>
 
         {isModalOpen && (
           <div 

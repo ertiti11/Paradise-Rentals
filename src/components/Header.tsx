@@ -41,12 +41,6 @@ const Navbar = () => {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
           <Link
-            to="/"
-            className="px-4 py-2 border border-white rounded-full bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
-          >
-            Sobre nosotros
-          </Link>
-          <Link
             to="/reservar"
             className="px-4 py-2 border border-white rounded-full bg-black text-white hover:bg-blue-500 hover:text-white transition-colors duration-300 shadow-md"
           >
