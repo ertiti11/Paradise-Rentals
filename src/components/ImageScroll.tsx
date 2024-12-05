@@ -14,12 +14,12 @@ const SkeletonOne = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        House in the woods
+        Disfruta del lujo de Paradise Rentals
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
+        Paradise Rentals dispone de una amplia y lujosa variedad de barcos diseñados especialmente para aquellos con gustos
+         refinados y un estilo de vida exclusivo, que buscan disfrutar de experiencias únicas en el mar.
       </p>
     </div>
   );
@@ -29,13 +29,13 @@ const SkeletonTwo = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        House above the clouds
+        Gran variedad de barcos
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Perched high above the world, this house offers breathtaking views and a
-        unique living experience. It&apos;s a place where the sky meets home,
-        and tranquility is a way of life.
+      Paradise Rentals ofrece una gran variedad de tipos de barcos, cuidadosamente seleccionados para satisfacer las necesidade
+       y deseos de los amantes de la navegación, desde embarcaciones elegantes y modernas hasta opciones clásicas y sofisticadas.
+
       </p>
     </div>
   );
@@ -44,12 +44,12 @@ const SkeletonThree = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Greens all over
+        Disfruta del mar con Paradise Rentals
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+        Paradise Rentals es, sin duda, la mejor opción para quienes desean disfrutar de una experiencia única e inigualable de lujo en el mar,
+         combinando embarcaciones de alta gama, servicios exclusivos y destinos paradisíacos que convierten cada travesía en un recuerdo inolvidable.
       </p>
     </div>
   );
@@ -58,12 +58,12 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Rivers are serene
+       Mejora la vida del mar con Paradise Rentals
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house by the river is a place of peace and tranquility. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+        Descubre nuestros innovadores barcos eléctricos, diseñados especialmente para ofrecer una experiencia de navegación sostenible y respetuosa
+         con el medio ambiente, mientras contribuyes activamente a la protección y conservación de los valiosos fondos marinos y su biodiversidad única.
       </p>
     </div>
   );

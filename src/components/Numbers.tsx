@@ -23,7 +23,7 @@ export default function Numbers() {
         para explorar destinos únicos y vivir experiencias inolvidables en el mar.
       </h2>
 
-      <p className="text-center mx-20 text-xl leading-relaxed font-roboto">
+      <p className="text-center mx-20 text-xl leading-relaxed poppins">
         En <b className="text-blue-400">Yacht Vacations</b>, nos apasiona
         ofrecerte experiencias inolvidables en el mar. Ya sea que busques
         relajarte en aguas tranquilas, explorar costas ocultas o disfrutar de un
